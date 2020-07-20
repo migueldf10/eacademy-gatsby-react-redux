@@ -11,3 +11,5 @@ This is a full-stack project done using Gatsby + React + Typescript + Redux in t
 - Typescript
 - Styled components
 - And growing...
+
+Skateboard sprint UX [Here](https://github.com/migueldf10/eacademy-gatsby-react-redux/tree/feat-diagram/project/20-07-20%20Skateboard%20sprint/README.md)
