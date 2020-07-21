@@ -14,8 +14,7 @@ export default function coursePage(props) {
         <h1>{course.title}</h1>
         <VideoEmbed url={course.videoUrl} />
 
-        <p>{course.videoUrl}</p>
-        <p>{course.price}</p>
+        <p>{course.price} Euros</p>
         <p>State: {course.published ? "Published" : "Draft"}</p>
         <p>{course.description}</p>
         <Button onClick={addToCartAction}>Add to cart</Button>

@@ -52,6 +52,7 @@ export const shopQuery = graphql`
               description
               price
               published
+              title
               updatedAt
               videoUrl
               lessons {

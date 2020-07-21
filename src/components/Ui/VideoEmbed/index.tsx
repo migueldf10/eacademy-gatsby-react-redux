@@ -1,13 +1,20 @@
 import React from "react"
 
-export default function VideoEmbed({ url: string }) {
+type PropTypes = {
+  url: string
+}
+export default function VideoEmbed(props: PropTypes) {
+  const { url } = props
+  const embedUrl = `http://www.youtube.com/embed/${
+    url.split("=")[1]
+  }?autoplay=1`
   return (
     <iframe
       id="ytplayer"
       width="600"
       height="360"
       style={{ maxWidth: "100%", height: "auto" }}
-      src="http://www.youtube.com/embed/M7lc1UVf-VE?autoplay=1&origin=http://example.com"
+      src={embedUrl}
       frameBorder="0"
     />
   )
