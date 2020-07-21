@@ -17,6 +17,15 @@ module.exports = {
     `gatsby-plugin-sharp`,
     `gatsby-plugin-styled-components`,
     {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "GTM-MHCQ3SW",
+        includeInDevelopment: true,
+        defaultDataLayer: { platform: "gatsby" },
+        routeChangeEventName: "route_change",
+      },
+    },
+    {
       resolve: `gatsby-plugin-manifest`,
       options: {
         name: `gatsby-starter-default`,
