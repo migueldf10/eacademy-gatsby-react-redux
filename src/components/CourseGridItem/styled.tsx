@@ -1,6 +1,8 @@
 import styled from "styled-components"
 
 export const CardContainer = styled.div`
-  border: 2px solid gray;
+  padding: 40px 0px;
+  background: lightsalmon;
   display: block;
+  margin-bottom: 50px;
 `

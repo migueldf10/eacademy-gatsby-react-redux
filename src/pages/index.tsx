@@ -28,7 +28,10 @@ const IndexPage = props => {
         {pages.edges
           .filter(node => node.node.context.course !== null)
           .map(course => (
-            <CourseGridItem course={course.node.context.course} />
+            <CourseGridItem
+              course={course.node.context.course}
+              key={course.node.context.course.id}
+            />
           ))}
       </Container>
     </Layout>
