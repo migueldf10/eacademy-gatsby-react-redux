@@ -9,7 +9,7 @@ exports.createPages = async ({ actions: { createPage } }) => {
 
 			createPage({
 				path: `/courses/${course.id}`,
-				component: require.resolve('./src/templates/courseTemplate.tsx'),
+				component: require.resolve('./src/templates/Course/index.tsx'),
 				context: { course }
 			});
 		})
