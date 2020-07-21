@@ -1,7 +1,7 @@
 import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "../Header"
-
+import { AppContainer } from "./styled"
 const Layout = props => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
@@ -15,7 +15,7 @@ const Layout = props => {
   const { children } = props
 
   return (
-    <>
+    <AppContainer>
       <Header siteTitle={data.site.siteMetadata.title} />
       <div
         style={{
@@ -31,7 +31,7 @@ const Layout = props => {
           <a href="https://www.gatsbyjs.org">Gatsby</a>
         </footer>
       </div>
-    </>
+    </AppContainer>
   )
 }
 
