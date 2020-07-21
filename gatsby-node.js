@@ -1,7 +1,22 @@
-/**
- * Implement Gatsby's Node APIs in this file.
- *
- * See: https://www.gatsbyjs.org/docs/node-apis/
- */
+const axios = require('axios');
 
-// You can delete this file if you're not using it
+const get = endpoint => axios.get(`http://localhost:4000${endpoint}`);
+
+
+exports.createPages = async ({ actions: { createPage } }) => {
+	try {
+		const response = await get('/course')
+		const courses = response.data.rows
+		courses.map(course => {
+			console.log(course)
+
+			createPage({
+				path: `/courses/${course.id}`,
+				component: require.resolve('./src/templates/courseTemplate.tsx'),
+				context: { course }
+			});
+		})
+	} catch (e) {
+		console.log('error', e)
+	}
+};
