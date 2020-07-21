@@ -10,6 +10,9 @@ export default function coursePage(props) {
     window.dataLayer.push({
       event: "add_to_cart",
       formLocation: "course_template",
+      productId: course.id,
+      productTitle: course.title,
+      price: course.price,
     })
   }
   return (
