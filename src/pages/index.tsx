@@ -1,18 +1,65 @@
 import React from "react"
-import { Link } from "gatsby"
+import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
+import CourseGridItem from "../components/CourseGridItem"
+import Locales from "../components/Locales"
 
-const IndexPage = () => (
-  <Layout>
-    <SEO title="Home" />
-    <h1>Hi people</h1>
-    <p>Welcome to your new Gatsby site.</p>
-    <p>Now go build something great.</p>
-    <div style={{ maxWidth: `300px`, marginBottom: `1.45rem` }}></div>
-    <Link to="/page-2/">Go to page 2</Link> <br />
-    <Link to="/using-typescript/">Go to "Using TypeScript"</Link>
-  </Layout>
-)
+const IndexPage = props => {
+  const { pages } = props.data
+  return (
+    <Layout>
+      <SEO title="Home" />
+      <h1>
+        <Locales location={"index.hero.title"} />
+      </h1>
+      <p>
+        <Locales location={"index.hero.content"} />
+      </p>
+      <h2>
+        <Locales location={"ui.allCourses"} />
+      </h2>
+
+      {pages.edges
+        .filter(node => node.node.context.course !== null)
+        .map(course => (
+          <CourseGridItem course={course.node.context.course} />
+        ))}
+    </Layout>
+  )
+}
 
 export default IndexPage
+
+export const shopQuery = graphql`
+  {
+    pages: allSitePage {
+      edges {
+        node {
+          context {
+            course {
+              id
+              createdAt
+              description
+              price
+              published
+              updatedAt
+              videoUrl
+              lessons {
+                description
+                id
+                priority
+                published
+                title
+                updatedAt
+                videoUrl
+                createdAt
+                courseId
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+`
