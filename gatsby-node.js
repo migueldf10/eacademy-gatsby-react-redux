@@ -17,3 +17,19 @@ exports.createPages = async ({ actions: { createPage } }) => {
 		console.log('error', e)
 	}
 };
+
+// Runs on every build page creation.
+
+exports.onCreatePage = async ({ page, actions }) => {
+	const { createPage } = actions
+
+	// page.matchPath is a special key that's used for matching pages
+	// only on the client. it lets us navigate to whatever comes after account. Separating marketing pages from app and not throwing errors
+
+	if (page.path.match(/^\/account/)) {
+		page.matchPath = "/account/*"
+
+		// Update the page.
+		createPage(page)
+	}
+}
