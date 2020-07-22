@@ -1,35 +1,5 @@
-// ./gatsby-browser.js
-import React from "react"
-import { silentAuth } from "./src/utils/auth"
-
-class SessionCheck extends React.Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			loading: true,
-		}
-	}
+import wrapWithProvider from "./wrap-with-provider"
 
 
-	handleCheckSession = () => {
-		this.setState({ loading: false })
-	}
 
-	componentDidMount() {
-		silentAuth(this.handleCheckSession)
-	}
-
-
-	render() {
-		console.log('rendering session check')
-		return (
-			this.state.loading === false && (
-				<React.Fragment>{this.props.children}</React.Fragment>
-			)
-		)
-	}
-}
-
-export const wrapRootElement = ({ element }) => {
-	return <SessionCheck>{element}</SessionCheck>
-}
+export const wrapRootElement = wrapWithProvider
