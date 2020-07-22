@@ -10,6 +10,7 @@ class SessionCheck extends React.Component {
 		}
 	}
 
+
 	handleCheckSession = () => {
 		this.setState({ loading: false })
 	}
@@ -18,7 +19,9 @@ class SessionCheck extends React.Component {
 		silentAuth(this.handleCheckSession)
 	}
 
+
 	render() {
+		console.log('rendering session check')
 		return (
 			this.state.loading === false && (
 				<React.Fragment>{this.props.children}</React.Fragment>

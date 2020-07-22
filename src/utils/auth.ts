@@ -70,6 +70,14 @@ export const getProfile = () => {
 }
 
 export const silentAuth = callback => {
+  console.log("running silent auth")
+  console.log("is authenticate?", isAuthenticated())
   if (!isAuthenticated()) return callback()
+
   auth.checkSession({}, setSession(callback))
+}
+
+export const logout = () => {
+  localStorage.setItem("isLoggedIn", "false")
+  auth.logout()
 }
