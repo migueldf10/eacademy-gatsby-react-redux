@@ -3,6 +3,7 @@ import Layout from "../../components/Layout"
 import { CourseContainer } from "./styled"
 import VideoEmbed from "../../components/Ui/VideoEmbed"
 import { Button } from "../../components/Ui/Button"
+
 export default function coursePage(props) {
   const { course } = props.pageContext
   const addToCartAction = () => {
@@ -15,6 +16,7 @@ export default function coursePage(props) {
       price: course.price,
     })
   }
+
   return (
     <Layout>
       <CourseContainer>

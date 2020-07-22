@@ -4,6 +4,13 @@ import Header from "../Header"
 import Footer from "../Footer"
 import { AppContainer } from "./styled"
 import "./normalize.css"
+import { DataLayer } from "../../models/DataLayer"
+declare global {
+  interface Window {
+    dataLayer: DataLayer
+  }
+}
+
 const Layout = props => {
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
