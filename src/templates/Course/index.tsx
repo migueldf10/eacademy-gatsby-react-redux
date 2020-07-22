@@ -3,18 +3,15 @@ import Layout from "../../components/Layout"
 import { CourseContainer } from "./styled"
 import VideoEmbed from "../../components/Ui/VideoEmbed"
 import { Button } from "../../components/Ui/Button"
+import { addToCart } from "../../state/commerce/actions"
+import { useDispatch } from "react-redux"
 
 export default function coursePage(props) {
   const { course } = props.pageContext
+  const dispatch = useDispatch()
+
   const addToCartAction = () => {
-    console.log("HEEEY YOU WANT TO BUY!")
-    window.dataLayer.push({
-      event: "add_to_cart",
-      formLocation: "course_template",
-      productId: course.id,
-      productTitle: course.title,
-      price: course.price,
-    })
+    dispatch(addToCart(course))
   }
 
   return (

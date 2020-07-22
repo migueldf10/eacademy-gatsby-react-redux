@@ -6,7 +6,7 @@ const initialState = {
 export default (state = initialState, { type, payload }) => {
   switch (type) {
     case ADD_TO_CART:
-      return { ...state, ...payload }
+      return { ...state, cart: [...state.cart, payload] }
 
     default:
       return state
