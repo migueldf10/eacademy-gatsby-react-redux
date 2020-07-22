@@ -1,10 +1,12 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import { HeaderContainer } from "./styled"
+import { HeaderContainer, HeaderWrapper } from "./styled"
+import { logout } from "../../utils/auth"
+import { Button } from "../Ui/Button"
 const Header = ({ siteTitle }) => (
-  <HeaderContainer>
-    <div>
+  <HeaderWrapper>
+    <HeaderContainer>
       <h1>
         <Link
           to="/"
@@ -16,8 +18,22 @@ const Header = ({ siteTitle }) => (
           {siteTitle}
         </Link>
       </h1>
-    </div>
-  </HeaderContainer>
+      <nav>
+        <Button as={Link} to="/account">
+          Login
+        </Button>
+        <a
+          href="#logout"
+          onClick={e => {
+            logout()
+            e.preventDefault()
+          }}
+        >
+          Log Out
+        </a>
+      </nav>
+    </HeaderContainer>
+  </HeaderWrapper>
 )
 
 Header.propTypes = {
