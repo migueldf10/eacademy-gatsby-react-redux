@@ -1,10 +1,12 @@
-import React from "react"
+import React, { useEffect } from "react"
 import Layout from "../components/Layout"
 import { Container } from "../components/Ui/Container"
 import { Router, RouteComponentProps } from "@reach/router"
 import { Link } from "gatsby"
 import { login, logout, isAuthenticated, getProfile } from "../utils/auth"
 import { UserType } from "../models/User"
+import { useDispatch } from "react-redux"
+import { setUserSession } from "../state/session/actions"
 
 interface componentProps extends RouteComponentProps {
   user: UserType
@@ -24,8 +26,12 @@ const Account = () => {
     login()
     return <p>Redirecting to login...</p>
   }
-
   const user = getProfile()
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    dispatch(setUserSession(user))
+  }, [])
 
   return (
     <Layout>

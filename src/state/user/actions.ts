@@ -1,1 +1,0 @@
-export const START_USER_SESSION = "START_USER_SESSION"
