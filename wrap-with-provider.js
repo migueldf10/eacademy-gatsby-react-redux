@@ -1,33 +1,28 @@
-import React from "react"
+import React, { useState, useEffect } from "react"
 import { silentAuth } from "./src/utils/auth"
 import { Provider } from "react-redux"
 
 import createStore from "./src/state/createStore"
 
-class SessionCheck extends React.Component {
-  constructor(props) {
-    super(props)
-    this.state = {
-      loading: true,
-    }
+
+
+const SessionCheck = (props) => {
+  const [loading, set_loading] = useState(true)
+
+  const handleCheckSection = () => {
+    set_loading(false)
   }
 
-  handleCheckSession = () => {
-    this.setState({ loading: false })
-  }
-
-  componentDidMount() {
-    silentAuth(this.handleCheckSession)
-  }
-
-  render() {
-    console.log('rendering session check')
-    return (
-      this.state.loading === false && (
-        <React.Fragment>{this.props.children}</React.Fragment>
-      )
+  useEffect(() => {
+    silentAuth(handleCheckSection)
+  }, [])
+  console.log('rendering session check')
+  return (
+    loading === false && (
+      <React.Fragment>{props.children}</React.Fragment>
     )
-  }
+  )
+
 }
 
 
