@@ -3,27 +3,47 @@ import Layout from "../components/Layout"
 import { Container } from "../components/Ui/Container"
 import { Router, RouteComponentProps } from "@reach/router"
 import { Link } from "gatsby"
+import { login, isAuthenticated, getProfile } from "../utils/auth"
+import { UserType } from "../models/User"
 
-const Home = (props: RouteComponentProps) => <p>Home</p>
+interface componentProps extends RouteComponentProps {
+  user: UserType
+}
+
+const Home = (props: componentProps) => {
+  const user = props.user
+
+  return <p>Hi, {user.name ? user.name : "friend"}!</p>
+}
+
 const Settings = (props: RouteComponentProps) => <p>Settings</p>
 const Billing = (props: RouteComponentProps) => <p>Billing</p>
 
-const Account = () => (
-  <Layout>
-    <Container>
-      <p>This is going to be a protected route.</p>
-      <nav>
-        <Link to="/account">Home</Link>{" "}
-        <Link to="/account/settings">Settings</Link>{" "}
-        <Link to="/account/billing">Billing</Link>{" "}
-      </nav>
-      <Router>
-        <Home path="/account" />
-        <Settings path="/account/settings" />
-        <Billing path="/account/billing" />
-      </Router>
-    </Container>
-  </Layout>
-)
+const Account = () => {
+  if (!isAuthenticated()) {
+    login()
+    return <p>Redirecting to login...</p>
+  }
+
+  const user = getProfile()
+
+  return (
+    <Layout>
+      <Container>
+        <p>This is going to be a protected route.</p>
+        <nav>
+          <Link to="/account">Home</Link>{" "}
+          <Link to="/account/settings">Settings</Link>{" "}
+          <Link to="/account/billing">Billing</Link>{" "}
+        </nav>
+        <Router>
+          <Home path="/account" user={user} />
+          <Settings path="/account/settings" />
+          <Billing path="/account/billing" />
+        </Router>
+      </Container>
+    </Layout>
+  )
+}
 
 export default Account
