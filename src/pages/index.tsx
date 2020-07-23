@@ -1,20 +1,13 @@
-import React, { useEffect } from "react"
-import { useDispatch } from "react-redux"
+import React from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 import CourseGridItem from "../components/CourseGridItem"
 import Locales from "../components/Locales"
 import { Container } from "../components/Ui/Container"
-import { testThunk } from "../state/commerce/actions"
 
 const IndexPage = props => {
   const { pages } = props.data
-  const dispatch = useDispatch()
-
-  useEffect(() => {
-    dispatch(testThunk())
-  }, [dispatch])
 
   return (
     <Layout>

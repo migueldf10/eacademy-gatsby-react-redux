@@ -5,6 +5,7 @@ import Footer from "../Footer"
 import { AppContainer } from "./styled"
 import "./normalize.css"
 import { DataLayer } from "../../models/DataLayer"
+
 declare global {
   interface Window {
     dataLayer: DataLayer

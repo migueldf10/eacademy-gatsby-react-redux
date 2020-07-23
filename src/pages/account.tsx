@@ -29,9 +29,7 @@ const Account = () => {
   const user = getProfile()
   const dispatch = useDispatch()
 
-  useEffect(() => {
-    dispatch(setUserSession(user))
-  }, [])
+  useEffect(() => {}, [])
 
   return (
     <Layout>
