@@ -29,11 +29,5 @@ export const testAuth = () => {
     } catch (e) {
       console.log("error", e)
     }
-    const result = await fetch("https://exampleco.com/api", {
-      method: "GET",
-      headers: {},
-    })
-    const data = await result.json()
-    console.log(data)
   }
 }

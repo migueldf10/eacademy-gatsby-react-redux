@@ -13,3 +13,7 @@ export const AppContainer = styled.div`
       [RS] 1fr [RXL] 1fr [RB];
   }
 `
+export const CheckoutContainer = styled.div`
+  grid-column: LS / RS 1;
+  padding: 60px 0;
+`

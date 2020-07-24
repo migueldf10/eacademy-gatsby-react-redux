@@ -13,7 +13,7 @@ const SessionCheck = props => {
   const handleCheckSection = () => {
     set_loading(false)
     dispatch(setSession(getProfile(), getToken()))
-    dispatch(testAuth())
+    // dispatch(testAuth())
   }
 
   useEffect(() => {
