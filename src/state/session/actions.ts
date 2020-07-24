@@ -1,15 +1,16 @@
-export const START_USER_SESSION = "START_USER_SESSION"
-export const END_USER_SESSION = "END_USER_SESSION"
+export const START_SESSION = "START_SESSION"
+export const END_SESSION = "END_SESSION"
 
-export const setUserSession = user => {
+export const setSession = (user, tokens) => {
   return {
-    type: START_USER_SESSION,
-    payload: user,
+    type: START_SESSION,
+    payload: { user, tokens },
   }
 }
-export const endUserSession = user => {
+
+export const endSession = user => {
   return {
-    type: END_USER_SESSION,
+    type: END_SESSION,
     payload: user,
   }
 }

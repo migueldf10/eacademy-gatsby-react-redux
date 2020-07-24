@@ -3,8 +3,8 @@ import { silentAuth } from "./src/utils/auth"
 import { Provider } from "react-redux"
 import createStore from "./src/state/createStore"
 import { useDispatch } from "react-redux"
-import { setUserSession } from "./src/state/session/actions"
-import { login, logout, isAuthenticated, getProfile } from "./src/utils/auth"
+import { setSession } from "./src/state/session/actions"
+import { getProfile, getToken } from "./src/utils/auth"
 
 const SessionCheck = props => {
   const [loading, set_loading] = useState(true)
@@ -12,7 +12,7 @@ const SessionCheck = props => {
 
   const handleCheckSection = () => {
     set_loading(false)
-    dispatch(setUserSession(getProfile()))
+    dispatch(setSession(getProfile(), getToken()))
   }
 
   useEffect(() => {
