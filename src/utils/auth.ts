@@ -68,6 +68,9 @@ export const handleAuthentication = () => {
 export const getProfile = () => {
   return user
 }
+export const getToken = () => {
+  return tokens
+}
 
 export const silentAuth = callback => {
   console.log("running silent auth")
