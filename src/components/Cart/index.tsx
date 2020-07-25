@@ -2,9 +2,10 @@ import React from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { getCart, getActiveCheckout } from "../../state/commerce/selectors"
 import { initiateCheckout } from "../../state/commerce/actions"
-import { CartWrapper, CartFooter, CartLineItem } from "./styled"
+import { CartWrapper, CartFooter } from "./styled"
 import { Button } from "../Ui"
 import locales from "../../utils/locales"
+import CartLineItem from "./components/CartLineItem"
 
 export default function Cart() {
   const cart = useSelector(getCart)
@@ -20,10 +21,7 @@ export default function Cart() {
         <span className="title">{locales("cart.title")}</span>
         <ul>
           {cart.map((cartItem, index) => (
-            <CartLineItem key={index}>
-              {cartItem.title} -{" "}
-              <span className={"price"}>{cartItem.price} E</span>
-            </CartLineItem>
+            <CartLineItem key={index} product={cartItem} />
           ))}
         </ul>
         <CartFooter>

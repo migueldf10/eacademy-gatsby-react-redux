@@ -28,7 +28,7 @@ export const CartFooter = styled.div`
   padding-top: 14px;
   justify-content: space-between;
 `
-export const CartLineItem = styled.li`
+export const CartLineItemContainer = styled.li`
   list-style: none;
   border-top: 1px solid gray;
   padding: 10px 22px 10px 0px;
