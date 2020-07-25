@@ -5,9 +5,9 @@ import { Router, RouteComponentProps } from "@reach/router"
 import { Link } from "gatsby"
 import { login, logout, isAuthenticated, getProfile } from "../utils/auth"
 import { UserType } from "../models/User"
-import { useDispatch } from "react-redux"
-import { setUserSession } from "../state/session/actions"
-
+import { useDispatch, useSelector } from "react-redux"
+import { setSession } from "../state/session/actions"
+import { getUser } from "../state/session/selectors"
 interface componentProps extends RouteComponentProps {
   user: UserType
 }
@@ -22,14 +22,19 @@ const Settings = (props: RouteComponentProps) => <p>Settings</p>
 const Billing = (props: RouteComponentProps) => <p>Billing</p>
 
 const Account = () => {
+  const dispatch = useDispatch()
+
   if (!isAuthenticated()) {
     login()
     return <p>Redirecting to login...</p>
   }
-  const user = getProfile()
-  const dispatch = useDispatch()
+  const userInLocal = useSelector(getUser)
+  console.log(userInLocal.sub)
+  if (!userInLocal.sub) {
+    dispatch(setSession())
+  }
 
-  useEffect(() => {}, [])
+  const user = getProfile()
 
   return (
     <Layout>
