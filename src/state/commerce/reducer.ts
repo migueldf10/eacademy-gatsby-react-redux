@@ -26,7 +26,6 @@ export default (state = initialState, { type, payload }) => {
       return {
         ...state,
         activeCheckout: initialState.activeCheckout,
-        cart: initialState.cart,
       }
 
     default:
