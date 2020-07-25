@@ -3,8 +3,8 @@ import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 import CourseGridItem from "../components/CourseGridItem"
-import Locales from "../components/Locales"
-import { Container } from "../components/Ui/Container"
+import locales from "../utils/locales"
+import { Container } from "../components/Ui"
 
 const IndexPage = props => {
   const { pages } = props.data
@@ -13,18 +13,12 @@ const IndexPage = props => {
     <Layout>
       <SEO title="Home" />
       <Container>
-        <h1>
-          <Locales location={"index.hero.title"} />
-        </h1>
-        <p>
-          <Locales location={"index.hero.content"} />
-        </p>
+        <h1>{locales("index.hero.title")}</h1>
+        <p>{locales("index.hero.content")}</p>
       </Container>
 
       <Container>
-        <h2>
-          <Locales location={"ui.allCourses"} />
-        </h2>
+        <h2>{locales("ui.allCourses")}</h2>
         {pages.edges
           .filter(node => node.node.context.course !== null)
           .map(course => (

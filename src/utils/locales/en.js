@@ -9,5 +9,8 @@ export default {
 	},
 	ui: {
 		allCourses: 'Our courses'
+	},
+	cart: {
+		title: 'Your shopping bag:'
 	}
 }
