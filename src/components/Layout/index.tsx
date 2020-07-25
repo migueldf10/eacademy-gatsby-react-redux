@@ -8,6 +8,7 @@ import { DataLayer } from "../../models/DataLayer"
 import Cart from "../Cart"
 import { useSelector, useDispatch } from "react-redux"
 import { getCart, getActiveCheckout } from "../../state/commerce/selectors"
+import { getUiState } from "../../state/ui/selectors"
 
 declare global {
   interface Window {
@@ -31,8 +32,9 @@ const Layout = props => {
   `)
   const { children } = props
   const activeCheckout = useSelector(getActiveCheckout)
+  const isActiveCheckout = useSelector(getUiState).activeCheckout
 
-  if (activeCheckout) {
+  if (isActiveCheckout) {
     return (
       <AppContainer>
         <CheckoutContainer>
