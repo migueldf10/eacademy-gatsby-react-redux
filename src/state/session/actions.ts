@@ -1,9 +1,11 @@
 import axios from "axios"
-
+import { getProfile, getToken } from "../../utils/auth"
 export const START_SESSION = "START_SESSION"
 export const END_SESSION = "END_SESSION"
 
-export const setSession = (user, tokens) => {
+export const setSession = () => {
+  const user = getProfile()
+  const tokens = getToken()
   return {
     type: START_SESSION,
     payload: { user, tokens },
