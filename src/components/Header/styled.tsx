@@ -10,6 +10,9 @@ export const HeaderContainer = styled.header`
   * {
     margin: 0;
   }
+  h1 {
+    font-size: 1.2em;
+  }
 `
 export const HeaderWrapper = styled.div`
   grid-column: LB / RB 1;
