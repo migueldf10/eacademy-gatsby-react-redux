@@ -1,7 +1,7 @@
-import styled from 'styled-components'
+import styled from "styled-components"
 
 export const CheckoutWrapper = styled.div`
-	margin: 0px;
+  margin: 0px;
   display: grid;
   grid-template-columns:
     [LB] 1fr [LXL] minmax(11ch, 0.7fr) [LS] repeat(3, [C] 21.66ch)
@@ -17,4 +17,11 @@ export const CheckoutWrapper = styled.div`
 export const CheckoutContainer = styled.div`
   grid-column: LS / RS 1;
   padding: 60px 0;
+`
+export const CheckoutHeader = styled.div`
+  grid-column: LB / RB 1;
+  padding: 14px 18px;
+  background: lightcoral;
+  display: flex;
+  justify-content: space-between;
 `

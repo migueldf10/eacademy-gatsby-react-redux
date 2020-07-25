@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import { HeaderContainer, HeaderWrapper } from "./styled"
 import { logout } from "../../utils/auth"
-import { Button } from "../Ui/Button"
+import { Button } from "../Ui"
 import { getUser } from "../../state/session/selectors"
 import { useSelector } from "react-redux"
 

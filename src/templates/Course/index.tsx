@@ -1,8 +1,7 @@
 import React from "react"
 import Layout from "../../components/Layout"
 import { CourseContainer } from "./styled"
-import VideoEmbed from "../../components/Ui/VideoEmbed"
-import { Button } from "../../components/Ui/Button"
+import { Button, VideoEmbed } from "../../components/Ui"
 import { addToCart } from "../../state/commerce/actions"
 import { useDispatch } from "react-redux"
 
