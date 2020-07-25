@@ -9,6 +9,7 @@ const auth: any = isBrowser
       domain: process.env.AUTH0_DOMAIN,
       clientID: process.env.AUTH0_CLIENTID,
       redirectUri: process.env.AUTH0_CALLBACK,
+      audience: process.env.AUTH0_AUDIENCE,
       responseType: "token id_token",
       scope: "openid profile email",
     })
@@ -67,6 +68,9 @@ export const handleAuthentication = () => {
 
 export const getProfile = () => {
   return user
+}
+export const getToken = () => {
+  return tokens
 }
 
 export const silentAuth = callback => {

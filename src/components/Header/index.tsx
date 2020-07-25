@@ -3,7 +3,7 @@ import PropTypes from "prop-types"
 import React from "react"
 import { HeaderContainer, HeaderWrapper } from "./styled"
 import { logout } from "../../utils/auth"
-import { Button } from "../Ui/Button"
+import { Button } from "../Ui"
 import { getUser } from "../../state/session/selectors"
 import { useSelector } from "react-redux"
 
@@ -26,7 +26,7 @@ const Header = ({ siteTitle }) => {
 
         <nav>
           {user.nickname ? (
-            <h3>
+            <span>
               Hey {user.nickname}{" "}
               <a
                 href="#logout"
@@ -37,7 +37,7 @@ const Header = ({ siteTitle }) => {
               >
                 Log Out
               </a>
-            </h3>
+            </span>
           ) : (
             <Button as={Link} to="/account">
               Login
