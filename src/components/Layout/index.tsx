@@ -2,22 +2,17 @@ import React from "react"
 import { useStaticQuery, graphql } from "gatsby"
 import Header from "../Header"
 import Footer from "../Footer"
-import { AppContainer, CheckoutContainer } from "./styled"
+import { AppContainer } from "./styled"
 import "./normalize.css"
 import { DataLayer } from "../../models/DataLayer"
 import Cart from "../Cart"
-import { useSelector, useDispatch } from "react-redux"
-import { getCart, getActiveCheckout } from "../../state/commerce/selectors"
+import { useSelector } from "react-redux"
 import { getUiState } from "../../state/ui/selectors"
-
+import Checkout from "../Checkout"
 declare global {
   interface Window {
     dataLayer: DataLayer
   }
-}
-
-const finishOrder = () => {
-  useDispatch
 }
 
 const Layout = props => {
@@ -31,22 +26,10 @@ const Layout = props => {
     }
   `)
   const { children } = props
-  const activeCheckout = useSelector(getActiveCheckout)
   const isActiveCheckout = useSelector(getUiState).activeCheckout
 
   if (isActiveCheckout) {
-    return (
-      <AppContainer>
-        <CheckoutContainer>
-          <form>
-            <input />
-            <input />
-            <input />
-            <button onClick={finishOrder}>Finish checkout</button>
-          </form>
-        </CheckoutContainer>
-      </AppContainer>
-    )
+    return <Checkout />
   }
 
   return (

@@ -2,12 +2,8 @@ import axios from "axios"
 import URL from "../../utils/api"
 export const ADD_TO_CART = "ADD_TO_CART"
 export const INIT_CHECKOUT = "INIT_CHECKOUT"
-
-export const testThunk = () => {
-  return async (dispatch, getState) => {
-    console.log(getState())
-  }
-}
+export const FINISH_CHECKOUT = "FINISH_CHECKOUT"
+export const STOP_CHECKOUT = "STOP_CHECKOUT"
 
 export const addToCart = product => {
   console.log("HEEEY YOU WANT TO BUY!")
@@ -43,6 +39,23 @@ export const initiateCheckout = () => async (dispatch, getState) => {
       type: INIT_CHECKOUT,
       payload: orderDraft.data,
     })
+  } catch (e) {
+    console.log("error", e)
+  }
+}
+
+export const finishCheckout = () => async (dispatch, getState) => {
+  console.log("inside finishing the checkout")
+  try {
+    dispatch({ type: FINISH_CHECKOUT, payload: {} })
+  } catch (e) {
+    console.log("error", e)
+  }
+}
+export const stopCheckout = () => async (dispatch, getState) => {
+  console.log("inside finishing the checkout")
+  try {
+    dispatch({ type: STOP_CHECKOUT, payload: {} })
   } catch (e) {
     console.log("error", e)
   }
