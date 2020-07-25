@@ -1,6 +1,6 @@
 module.exports = {
   siteMetadata: {
-    title: `Gatsby Default Starter`,
+    title: `E-Academy`,
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
   },
@@ -15,6 +15,16 @@ module.exports = {
     },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-plugin-styled-components`,
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: "GTM-MHCQ3SW",
+        includeInDevelopment: true,
+        defaultDataLayer: { platform: "gatsby" },
+        routeChangeEventName: "route_change",
+      },
+    },
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
