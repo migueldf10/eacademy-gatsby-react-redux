@@ -1,12 +1,11 @@
 import React, { useEffect } from "react"
 import Layout from "../../components/Layout"
 import { CourseContainer } from "./styled"
-import { Button, VideoEmbed } from "../../components/Ui"
-import { addToCart } from "../../state/commerce/actions"
 import { useDispatch, useSelector } from "react-redux"
 import { setActiveCourse } from "../../state/course/actions"
 import { getActiveCourse } from "../../state/course/selectors"
 import LessonGridItem from "../../components/LessonGridItem"
+
 export default function MyCourse(props) {
   // const { course } = props.pageContext
   const dispatch = useDispatch()

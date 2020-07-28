@@ -19,20 +19,6 @@ const Course = (props: any) => {
 }
 
 const MyCoursesComponent = () => {
-  const dispatch = useDispatch()
-
-  // if (!isAuthenticated()) {
-  //   login()
-  //   return <p>Redirecting to login...</p>
-  // }
-  // const userInLocal = useSelector(getUser)
-  // console.log(userInLocal.sub)
-  // if (!userInLocal.sub) {
-  //   dispatch(setSession())
-  // }
-
-  const user = getProfile()
-
   return (
     <Router>
       <MyCourse path="/my-courses/:courseId" />
