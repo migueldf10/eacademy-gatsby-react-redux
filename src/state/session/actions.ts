@@ -1,14 +1,25 @@
-import axios from "axios"
+import buildAxios from "../../utils/api"
 import { getProfile, getToken } from "../../utils/auth"
 export const START_SESSION = "START_SESSION"
+export const FILL_PROFILE = "FILL_PROFILE"
 export const END_SESSION = "END_SESSION"
 
 export const setSession = () => {
   const user = getProfile()
   const tokens = getToken()
-  return {
-    type: START_SESSION,
-    payload: { user, tokens },
+  if (tokens && user) {
+    return async (dispatch, getState) => {
+      try {
+        const response = await buildAxios(tokens.idToken).get(`/users`)
+        dispatch({
+          type: START_SESSION,
+          payload: { user, tokens, session: response.data },
+        })
+        console.log(response.data)
+      } catch (e) {
+        console.log("error", e)
+      }
+    }
   }
 }
 
@@ -19,17 +30,4 @@ export const endSession = user => {
   }
 }
 
-export const testAuth = () => {
-  return async (dispatch, getState) => {
-    try {
-      const response = await axios.get("http://localhost:4000/authorized", {
-        headers: {
-          Authorization: "Bearer " + getState().session.tokens.idToken,
-        },
-      })
-      console.log(response.data)
-    } catch (e) {
-      console.log("error", e)
-    }
-  }
-}
+export const fillProfile = () => {}
