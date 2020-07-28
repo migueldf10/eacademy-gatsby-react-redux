@@ -5,23 +5,24 @@ import { Button, VideoEmbed } from "../../components/Ui"
 import { addToCart } from "../../state/commerce/actions"
 import { useDispatch } from "react-redux"
 
-export default function coursePage(props) {
-  const { course } = props.pageContext
+export default function MyCourse(props) {
+  // const { course } = props.pageContext
   const dispatch = useDispatch()
 
-  const addToCartAction = () => {
-    dispatch(addToCart(course))
-  }
+  // const addToCartAction = () => {
+  //   dispatch(addToCart(course))
+  // }
 
   return (
     <Layout>
       <CourseContainer>
-        <h1>{course.title}</h1>
+        <p>Hi,! {props.courseId}</p>
+        {/* <h1>{course.title}</h1>
         <VideoEmbed url={course.videoUrl} />
         <p>{course.price} Euros</p>
         <p>State: {course.published ? "Published" : "Draft"}</p>
         <p>{course.description}</p>
-        <Button onClick={addToCartAction}>Add to cart</Button>
+        <Button onClick={addToCartAction}>Add to cart</Button> */}
       </CourseContainer>
     </Layout>
   )
