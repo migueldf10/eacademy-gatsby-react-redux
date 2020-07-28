@@ -8,6 +8,7 @@ import { UserType } from "../../models/User"
 import { useDispatch, useSelector } from "react-redux"
 import { setSession } from "../../state/session/actions"
 import { getUser, getCourses } from "../../state/session/selectors"
+import MyCoursesGridItem from "./components/MyCoursesGridItem"
 
 const AccountTemplate = () => {
   const dispatch = useDispatch()
@@ -29,9 +30,14 @@ const AccountTemplate = () => {
   return (
     <Layout>
       <Container>
-        <h3>My courses</h3>
+        <h2>My courses</h2>
         {courses.length > 0 ? (
-          courses.map(course => <span>{course.title}</span>)
+          courses.map(course => (
+            <MyCoursesGridItem
+              key={course.id}
+              course={course}
+            ></MyCoursesGridItem>
+          ))
         ) : (
           <Link to="/">Buy some courses to start working!</Link>
         )}
