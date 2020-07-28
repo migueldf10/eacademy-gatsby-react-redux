@@ -13,7 +13,12 @@ export const setSession = () => {
         const response = await buildAxios(tokens.idToken).get(`/users`)
         dispatch({
           type: START_SESSION,
-          payload: { user, tokens, session: response.data },
+          payload: {
+            user,
+            tokens,
+            courses: response.data[0].courses,
+            todoLessons: response.data[0].todoLessons,
+          },
         })
         console.log(response.data)
       } catch (e) {

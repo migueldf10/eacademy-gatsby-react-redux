@@ -3,6 +3,8 @@ import { START_SESSION, END_SESSION, FILL_PROFILE } from "./actions"
 const initialState = {
   user: {},
   tokens: {},
+  courses: [],
+  todoLessons: [],
 }
 
 export default (state = initialState, { type, payload }) => {
