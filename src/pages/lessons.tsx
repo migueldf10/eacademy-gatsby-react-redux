@@ -8,6 +8,7 @@ import { UserType } from "../models/User"
 import { useDispatch, useSelector } from "react-redux"
 import { setSession } from "../state/session/actions"
 import { getUser } from "../state/session/selectors"
+import Lesson from "../templates/Lesson"
 
 interface componentProps extends RouteComponentProps {
   user: UserType
@@ -33,14 +34,9 @@ const LessonComponent = () => {
   const user = getProfile()
 
   return (
-    <Layout>
-      <Container>
-        <Router>
-          <Course path="/lessons/:lessonId" />
-        </Router>
-        <h1>MY lessons</h1>
-      </Container>
-    </Layout>
+    <Router>
+      <Lesson path="/lessons/:lessonId" />
+    </Router>
   )
 }
 

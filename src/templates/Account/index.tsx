@@ -18,7 +18,7 @@ const AccountTemplate = () => {
     return <p>Redirecting to login...</p>
   }
   const userInLocal = useSelector(getUser)
-  console.log(userInLocal)
+  // console.log(userInLocal)
   if (!userInLocal.sub) {
     dispatch(setSession())
   }
