@@ -16,8 +16,8 @@ export const setSession = () => {
           payload: {
             user,
             tokens,
-            courses: response.data[0].courses,
-            todoLessons: response.data[0].todoLessons,
+            courses: response.data.courses,
+            todoLessons: response.data.todoLessons,
           },
         })
         console.log(response.data)
