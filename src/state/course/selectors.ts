@@ -1,2 +1,2 @@
-export const getActiveCourse = state => state.activeCourse
+export const getActiveCourse = state => state.course
 export const getActiveLesson = state => state.activeLesson
