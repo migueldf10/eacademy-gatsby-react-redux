@@ -26,8 +26,8 @@ const Header = ({ siteTitle }) => {
 
         <nav>
           {user.nickname ? (
-            <Link to="/account">
-              Hey {user.nickname}{" "}
+            <>
+              <Link to="/account">Hey {user.nickname} </Link>
               <a
                 href="#logout"
                 onClick={e => {
@@ -37,7 +37,7 @@ const Header = ({ siteTitle }) => {
               >
                 Log Out
               </a>
-            </Link>
+            </>
           ) : (
             <Button as={Link} to="/account">
               Login
