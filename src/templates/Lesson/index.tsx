@@ -7,20 +7,20 @@ import { getActiveLesson } from "../../state/lesson/selectors"
 import LessonGridItem from "../../components/LessonGridItem"
 
 export default function Lesson(props) {
-  // const { course } = props.pageContext
   const dispatch = useDispatch()
-  const activeLesson = useSelector(getActiveLesson).lesson
+  const { lesson, nextLesson, previousLesson } = useSelector(getActiveLesson)
 
   useEffect(() => {
     dispatch(setActiveLesson(props.lessonId))
   }, [])
 
-  if (!activeLesson.id) return null
+  if (!lesson || !lesson.id) return null
 
   return (
     <Layout>
       <CourseContainer>
-        <h1>{activeLesson.title}</h1>
+        <h1>{lesson.title}</h1>
+        {/* {activeLesson} */}
       </CourseContainer>
     </Layout>
   )
