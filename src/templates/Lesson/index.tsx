@@ -9,29 +9,18 @@ import LessonGridItem from "../../components/LessonGridItem"
 export default function Lesson(props) {
   // const { course } = props.pageContext
   const dispatch = useDispatch()
-  const activeLesson = useSelector(getActiveLesson)
-  console.log("Active lesson", activeLesson)
-  console.log("lesson Id", props.lessonId)
+  const activeLesson = useSelector(getActiveLesson).lesson
+
   useEffect(() => {
     dispatch(setActiveLesson(props.lessonId))
   }, [])
-  // const addToCartAction = () => {
-  //   dispatch(addToCart(course))
-  // }
 
   if (!activeLesson.id) return null
 
   return (
     <Layout>
       <CourseContainer>
-        <p>{activeLesson.title}</p>
-
-        {/* <h1>{course.title}</h1>
-        <VideoEmbed url={course.videoUrl} />
-        <p>{course.price} Euros</p>
-        <p>State: {course.published ? "Published" : "Draft"}</p>
-        <p>{course.description}</p>
-        <Button onClick={addToCartAction}>Add to cart</Button> */}
+        <h1>{activeLesson.title}</h1>
       </CourseContainer>
     </Layout>
   )
