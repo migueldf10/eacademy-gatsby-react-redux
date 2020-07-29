@@ -8,7 +8,7 @@ export const getActiveLesson = state => {
         ? state.course.lessons[currentLessonIndex - 1]
         : null
     const nextLesson =
-      currentLessonIndex >= lessonsIds.length
+      currentLessonIndex <= lessonsIds.length
         ? state.course.lessons[currentLessonIndex + 1]
         : null
 
@@ -18,5 +18,6 @@ export const getActiveLesson = state => {
       nextLesson: nextLesson,
     }
   }
+  console.log("there is only one lesson in the array")
   return state.lesson
 }
