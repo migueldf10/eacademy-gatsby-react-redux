@@ -17,7 +17,9 @@ export const setSession = () => {
             user,
             tokens,
             courses: response.data.courses,
-            todoLessons: response.data.todoLessons.map(lesson => lesson.id),
+            todoLessons: response.data.todoLessons.map(
+              todoLesson => todoLesson.lessonId
+            ),
             completedLessons: response.data.completedLessons.map(
               lesson => lesson.id
             ),

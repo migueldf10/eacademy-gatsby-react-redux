@@ -2,11 +2,11 @@ import React, { useEffect } from "react"
 import Layout from "../../components/Layout"
 import { CourseContainer } from "./styled"
 import { useDispatch, useSelector } from "react-redux"
-import { setActiveLesson } from "../../state/lesson/actions"
+import { setActiveLesson, toggleLessonAsTodo } from "../../state/lesson/actions"
 import { getActiveLesson } from "../../state/lesson/selectors"
 import LessonGridItem from "../../components/LessonGridItem"
 import { Link } from "@reach/router"
-import { VideoEmbed } from "../../components/Ui"
+import { VideoEmbed, Button } from "../../components/Ui"
 
 export default function Lesson(props) {
   const { lessonId } = props
@@ -40,6 +40,13 @@ export default function Lesson(props) {
         ) : (
           <h3>Marked as later:NOT</h3>
         )}
+        <Button
+          onClick={() => {
+            dispatch(toggleLessonAsTodo())
+          }}
+        >
+          TOGGLE LESSON as check later
+        </Button>
       </CourseContainer>
     </Layout>
   )
