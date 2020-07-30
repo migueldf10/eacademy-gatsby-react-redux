@@ -18,14 +18,11 @@ export default (state = initialState, { type, payload }) => {
     case START_SESSION:
       return { ...payload }
     case FILL_PROFILE:
-      console.log(payload)
       return { ...state }
 
     case MAKE_LESSON_AS_TODO:
       return { ...state, todoLessons: [...state.todoLessons, payload.lessonId] }
     case REMOVE_LESSON_AS_TODO:
-      console.log("array of todos", state.todoLessons)
-      console.log("Removing from the array the id", payload)
       const newTodoArray = state.todoLessons.filter(
         lessonId => lessonId !== payload
       )
@@ -37,12 +34,9 @@ export default (state = initialState, { type, payload }) => {
         completedLessons: [...state.completedLessons, payload.lessonId],
       }
     case REMOVE_LESSON_AS_DONE:
-      console.log("array of todos", state.completedLessons)
-      console.log("Removing from the array the id", payload)
       const newCompletedArray = state.completedLessons.filter(
         lessonId => lessonId !== payload
       )
-      console.log("filtered", newCompletedArray)
 
       return { ...state, completedLessons: newCompletedArray }
     case END_SESSION:
