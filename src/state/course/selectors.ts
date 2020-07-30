@@ -20,10 +20,6 @@ export const getActiveCourse = state => {
       return { ...lesson, completed: false }
     })
 
-    console.log("finished", {
-      ...state.course,
-      lessons: courseLessonsWithCompleted,
-    })
     return { ...state.course, lessons: courseLessonsWithCompleted }
   }
 
