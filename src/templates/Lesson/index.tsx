@@ -13,8 +13,6 @@ export default function Lesson(props) {
   const dispatch = useDispatch()
   const { lesson, nextLesson, previousLesson } = useSelector(getActiveLesson)
 
-  console.log(lesson)
-
   useEffect(() => {
     dispatch(setActiveLesson(props.lessonId))
   }, [dispatch, lessonId])
