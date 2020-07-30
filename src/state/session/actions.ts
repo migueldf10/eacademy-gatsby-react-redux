@@ -17,7 +17,10 @@ export const setSession = () => {
             user,
             tokens,
             courses: response.data.courses,
-            todoLessons: response.data.todoLessons,
+            todoLessons: response.data.todoLessons.map(lesson => lesson.id),
+            completedLessons: response.data.completedLessons.map(
+              lesson => lesson.id
+            ),
           },
         })
         // console.log(response.data)
