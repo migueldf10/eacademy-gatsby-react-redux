@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import { LessonGridItemContainer } from "./styled"
 export default function LessonGridItem(props) {
   const { lesson } = props
-  console.log(lesson)
+  // console.log(lesson)
   return (
     <LessonGridItemContainer as={Link} to={`/lessons/${lesson.id}`}>
       {lesson.title}
