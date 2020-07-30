@@ -1,7 +1,15 @@
 export const getActiveLesson = state => {
+  const { todoLessons, completedLessons } = state.session
+
   if (state.course.lessons && state.course.lessons.length > 0) {
     const lessonsIds = state.course.lessons.map(obj => obj.id)
     const currentLessonIndex = lessonsIds.indexOf(state.lesson.id)
+
+    const lesson = {
+      ...state.lesson,
+      toDo: todoLessons.includes(state.lesson.id) ? true : false,
+      completed: completedLessons.includes(state.lesson.id) ? true : false,
+    }
 
     const previousLesson =
       currentLessonIndex > 0
@@ -14,7 +22,7 @@ export const getActiveLesson = state => {
 
     return {
       previousLesson: previousLesson,
-      lesson: state.lesson,
+      lesson,
       nextLesson: nextLesson,
     }
   }

@@ -13,6 +13,8 @@ export default function Lesson(props) {
   const dispatch = useDispatch()
   const { lesson, nextLesson, previousLesson } = useSelector(getActiveLesson)
 
+  console.log(lesson)
+
   useEffect(() => {
     dispatch(setActiveLesson(props.lessonId))
   }, [dispatch, lessonId])
@@ -33,6 +35,12 @@ export default function Lesson(props) {
           <Link to={`/lessons/${nextLesson.id}`}>Next</Link>
         ) : (
           <Link to={`/my-courses/${lesson.courseId}`}>Go to course page</Link>
+        )}
+        {lesson.completed ? <h3>Done:YES</h3> : <h3>Done:NOT</h3>}
+        {lesson.toDo ? (
+          <h3>Marked as later:YES</h3>
+        ) : (
+          <h3>Marked as later:NOT</h3>
         )}
       </CourseContainer>
     </Layout>
