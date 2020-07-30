@@ -21,7 +21,7 @@ export const toggleLessonAsTodo = () => {
     if (todoLessons && todoLessons.length > 0) {
       const setTodoLessonAs = todoLessons.includes(lesson.id) ? false : true
       const response = await buildAxios(getState().session.tokens.idToken).put(
-        `/actions/toggleLessonDone/${lesson.id}`,
+        `/actions/toggleLessonAsTodo/${lesson.id}`,
         {
           set: setTodoLessonAs,
         }
