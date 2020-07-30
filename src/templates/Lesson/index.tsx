@@ -2,7 +2,11 @@ import React, { useEffect } from "react"
 import Layout from "../../components/Layout"
 import { CourseContainer } from "./styled"
 import { useDispatch, useSelector } from "react-redux"
-import { setActiveLesson, toggleLessonAsTodo } from "../../state/lesson/actions"
+import {
+  setActiveLesson,
+  toggleLessonAsTodo,
+  toggleLessonAsDone,
+} from "../../state/lesson/actions"
 import { getActiveLesson } from "../../state/lesson/selectors"
 import LessonGridItem from "../../components/LessonGridItem"
 import { Link } from "@reach/router"
@@ -35,6 +39,14 @@ export default function Lesson(props) {
           <Link to={`/my-courses/${lesson.courseId}`}>Go to course page</Link>
         )}
         {lesson.completed ? <h3>Done:YES</h3> : <h3>Done:NOT</h3>}
+        <Button
+          onClick={() => {
+            dispatch(toggleLessonAsDone())
+          }}
+        >
+          TOGGLE LESSON as completed
+        </Button>
+
         {lesson.toDo ? (
           <h3>Marked as later:YES</h3>
         ) : (
