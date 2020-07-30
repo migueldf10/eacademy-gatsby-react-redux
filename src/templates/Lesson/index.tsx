@@ -41,7 +41,7 @@ export default function Lesson(props) {
         {lesson.completed ? <h3>Done:YES</h3> : <h3>Done:NOT</h3>}
         <Button
           onClick={() => {
-            dispatch(toggleLessonAsDone())
+            dispatch(toggleLessonAsDone(lesson.id))
           }}
         >
           TOGGLE LESSON as completed
@@ -54,7 +54,7 @@ export default function Lesson(props) {
         )}
         <Button
           onClick={() => {
-            dispatch(toggleLessonAsTodo())
+            dispatch(toggleLessonAsTodo(lesson.id))
           }}
         >
           TOGGLE LESSON as check later

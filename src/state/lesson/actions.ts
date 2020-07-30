@@ -17,14 +17,13 @@ export const setActiveLesson = lessonId => {
   }
 }
 
-export const toggleLessonAsTodo = () => {
+export const toggleLessonAsTodo = lessonId => {
   return async (dispatch, getState) => {
     const { todoLessons } = getState().session
-    const lesson = getState().lesson
     if (todoLessons && todoLessons.length > 0) {
-      const setTodoLessonAs = todoLessons.includes(lesson.id) ? false : true
+      const setTodoLessonAs = todoLessons.includes(lessonId) ? false : true
       const response = await buildAxios(getState().session.tokens.idToken).put(
-        `/actions/toggleLessonAsTodo/${lesson.id}`,
+        `/actions/toggleLessonAsTodo/${lessonId}`,
         {
           set: setTodoLessonAs,
         }
@@ -38,23 +37,23 @@ export const toggleLessonAsTodo = () => {
       } else {
         dispatch({
           type: REMOVE_LESSON_AS_TODO,
-          payload: lesson.id,
+          payload: lessonId,
         })
       }
     }
   }
 }
 
-export const toggleLessonAsDone = () => {
+export const toggleLessonAsDone = lessonId => {
   return async (dispatch, getState) => {
     const { completedLessons } = getState().session
-    const lesson = getState().lesson
+
     if (completedLessons && completedLessons.length > 0) {
-      const setCompletedLessonAs = completedLessons.includes(lesson.id)
+      const setCompletedLessonAs = completedLessons.includes(lessonId)
         ? false
         : true
       const response = await buildAxios(getState().session.tokens.idToken).put(
-        `/actions/toggleLessonAsDone/${lesson.id}`,
+        `/actions/toggleLessonAsDone/${lessonId}`,
         {
           set: setCompletedLessonAs,
         }
@@ -68,7 +67,7 @@ export const toggleLessonAsDone = () => {
       } else {
         dispatch({
           type: REMOVE_LESSON_AS_DONE,
-          payload: lesson.id,
+          payload: lessonId,
         })
       }
     }
