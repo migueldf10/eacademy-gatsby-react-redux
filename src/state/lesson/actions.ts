@@ -20,7 +20,7 @@ export const setActiveLesson = lessonId => {
 export const toggleLessonAsTodo = lessonId => {
   return async (dispatch, getState) => {
     const { todoLessons } = getState().session
-    if (todoLessons && todoLessons.length > 0) {
+    if (todoLessons) {
       const setTodoLessonAs = todoLessons.includes(lessonId) ? false : true
       const response = await buildAxios(getState().session.tokens.idToken).put(
         `/actions/toggleLessonAsTodo/${lessonId}`,
@@ -48,7 +48,7 @@ export const toggleLessonAsDone = lessonId => {
   return async (dispatch, getState) => {
     const { completedLessons } = getState().session
 
-    if (completedLessons && completedLessons.length > 0) {
+    if (completedLessons) {
       const setCompletedLessonAs = completedLessons.includes(lessonId)
         ? false
         : true
