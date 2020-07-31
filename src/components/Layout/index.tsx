@@ -8,7 +8,9 @@ import { DataLayer } from "../../models/DataLayer"
 import Cart from "../Cart"
 import { useSelector } from "react-redux"
 import { getUiState } from "../../state/ui/selectors"
+import { isAdmin } from "../../state/session/selectors"
 import Checkout from "../Checkout"
+import { Button } from "../Ui"
 declare global {
   interface Window {
     dataLayer: DataLayer
@@ -27,6 +29,7 @@ const Layout = props => {
   `)
   const { children } = props
   const isActiveCheckout = useSelector(getUiState).activeCheckout
+  const admin = useSelector(isAdmin)
 
   if (isActiveCheckout) {
     return <Checkout />
@@ -34,6 +37,7 @@ const Layout = props => {
 
   return (
     <AppContainer>
+      {admin ? <Button>EDIT</Button> : null}
       <Header siteTitle={data.site.siteMetadata.title} />
       <Cart />
       {children}
