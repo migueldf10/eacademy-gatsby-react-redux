@@ -21,7 +21,7 @@ export const setSession = () => {
               todoLesson => todoLesson.lessonId
             ),
             completedLessons: response.data.completedLessons.map(
-              lesson => lesson.id
+              lesson => lesson.lessonId
             ),
           },
         })
