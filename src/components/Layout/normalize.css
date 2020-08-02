@@ -22,3 +22,8 @@ a {
   color: inherit;
   text-decoration: none;
 }
+
+*::selection {
+  color: black;
+  background-color: lightgreen;
+}

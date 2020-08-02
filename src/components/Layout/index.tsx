@@ -11,6 +11,8 @@ import { getUiState } from "../../state/ui/selectors"
 import { isAdmin } from "../../state/session/selectors"
 import Checkout from "../Checkout"
 import AdminBar from "../AdminBar"
+import { ThemeProvider } from "styled-components"
+import themes from "../../theme"
 
 declare global {
   interface Window {
@@ -30,20 +32,22 @@ const Layout = props => {
   `)
   const { children } = props
   const isActiveCheckout = useSelector(getUiState).activeCheckout
-  const admin = useSelector(isAdmin)
+  const theme = "blue"
 
   if (isActiveCheckout) {
     return <Checkout />
   }
 
   return (
-    <AppContainer>
-      <AdminBar />
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <Cart />
-      {children}
-      <Footer />
-    </AppContainer>
+    <ThemeProvider theme={themes[theme]}>
+      <AppContainer>
+        <AdminBar />
+        <Header siteTitle={data.site.siteMetadata.title} />
+        <Cart />
+        {children}
+        <Footer />
+      </AppContainer>
+    </ThemeProvider>
   )
 }
 
