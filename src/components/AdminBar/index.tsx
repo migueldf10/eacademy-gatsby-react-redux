@@ -1,10 +1,19 @@
 import React from "react"
 import { useSelector } from "react-redux"
 import { isAdmin } from "../../state/session/selectors"
-import { Container } from "./styled"
+import Styled from "./styled"
 import { Button } from "../Ui"
 
 export default function AdminBar() {
   const admin = useSelector(isAdmin)
-  return <Container>{admin ? <Button>EDIT</Button> : null}</Container>
+
+  if (!admin) return null
+  return (
+    <Styled.Wrapper>
+      <Styled.Container>
+        <h3>This is the admin bar</h3>
+        <Button>EDIT</Button>
+      </Styled.Container>
+    </Styled.Wrapper>
+  )
 }
