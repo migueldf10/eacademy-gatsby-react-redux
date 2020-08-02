@@ -8,7 +8,7 @@ import locales from "../../utils/locales"
 import CartLineItem from "./components/CartLineItem"
 import Header from "../Header"
 import { getUser } from "../../state/session/selectors"
-import { login, logout, isAuthenticated, getProfile } from "../../utils/auth"
+import { login } from "../../utils/auth"
 
 export default function Cart() {
   const cart = useSelector(getCart)
