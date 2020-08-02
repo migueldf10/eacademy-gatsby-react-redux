@@ -1,7 +1,7 @@
 import { Link } from "gatsby"
 import PropTypes from "prop-types"
 import React from "react"
-import { HeaderContainer, HeaderWrapper } from "./styled"
+import Styled from "./styled"
 import { logout } from "../../utils/auth"
 import { Button } from "../Ui"
 import { getUser } from "../../state/session/selectors"
@@ -10,21 +10,13 @@ import { useSelector } from "react-redux"
 const Header = ({ siteTitle }) => {
   const user = useSelector(getUser)
   return (
-    <HeaderWrapper>
-      <HeaderContainer>
+    <Styled.Wrapper>
+      <Styled.Container>
         <h1>
-          <Link
-            to="/"
-            style={{
-              color: `white`,
-              textDecoration: `none`,
-            }}
-          >
-            {siteTitle}
-          </Link>
+          <Link to="/">{siteTitle}</Link>
         </h1>
 
-        <nav>
+        <Styled.Navigation>
           {user.nickname ? (
             <>
               <Link to="/account">Hey {user.nickname} </Link>
@@ -43,9 +35,9 @@ const Header = ({ siteTitle }) => {
               Login
             </Button>
           )}
-        </nav>
-      </HeaderContainer>
-    </HeaderWrapper>
+        </Styled.Navigation>
+      </Styled.Container>
+    </Styled.Wrapper>
   )
 }
 
