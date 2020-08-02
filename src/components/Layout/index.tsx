@@ -10,7 +10,8 @@ import { useSelector } from "react-redux"
 import { getUiState } from "../../state/ui/selectors"
 import { isAdmin } from "../../state/session/selectors"
 import Checkout from "../Checkout"
-import { Button } from "../Ui"
+import AdminBar from "../AdminBar"
+
 declare global {
   interface Window {
     dataLayer: DataLayer
@@ -37,7 +38,7 @@ const Layout = props => {
 
   return (
     <AppContainer>
-      {admin ? <Button>EDIT</Button> : null}
+      <AdminBar />
       <Header siteTitle={data.site.siteMetadata.title} />
       <Cart />
       {children}
