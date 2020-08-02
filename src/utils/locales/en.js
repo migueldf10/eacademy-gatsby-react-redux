@@ -9,6 +9,8 @@ export default {
 	},
 	ui: {
 		allCourses: 'Our courses',
+		myAccount: 'My account',
+		login: 'Log in',
 	},
 	cart: {
 		title: 'Your shopping bag:',
