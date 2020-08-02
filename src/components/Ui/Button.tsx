@@ -3,8 +3,8 @@ import styled from "styled-components"
 import mixins from "../../theme/mixins"
 
 const Button = styled.button`
-  ${mixins.colored.primary}
-
+  ${mixins.colored.primary};
+  display:inline-block;
   padding: 10px 20px;
   border-radius: 5px;
   color: ${props => props.theme.lighterTwo};

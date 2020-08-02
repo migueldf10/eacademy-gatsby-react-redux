@@ -41,13 +41,12 @@ export default function coursePage(props) {
             {locales("cart.addToCart")}
           </Button.ContrastPrimary>
         ) : (
-          <>
-            <span>You already own this course!</span>
-            <br />
+          <div>
+            <div>You already own this course!</div>
             <Button.ContrastPrimary as={Link} to={`/my-courses/${course.id}`}>
               View the course page
             </Button.ContrastPrimary>
-          </>
+          </div>
         )}
       </Styled.Container>
     </Layout>
