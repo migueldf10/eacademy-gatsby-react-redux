@@ -11,6 +11,8 @@ export default function MyCourse(props) {
   const dispatch = useDispatch()
   const activeCourse = useSelector(getActiveCourse)
   // console.log("activeCourse", activeCourse)
+
+  
   useEffect(() => {
     dispatch(setActiveCourse(props.courseId))
   }, [])
@@ -25,8 +27,8 @@ export default function MyCourse(props) {
       <CourseContainer>
         <p>{activeCourse.title}</p>
 
-        {activeCourse.lessons.map(lesson => (
-          <LessonGridItem lesson={lesson} key={lesson.id} />
+        {activeCourse.lessons.map((lesson,index) => (
+          <LessonGridItem lesson={lesson} index={index} key={lesson.id} />
         ))}
         {/* <h1>{course.title}</h1>
         <VideoEmbed url={course.videoUrl} />

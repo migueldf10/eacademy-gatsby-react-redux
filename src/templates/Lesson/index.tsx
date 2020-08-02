@@ -30,7 +30,7 @@ export default function Lesson(props) {
           <Link to={`/lessons/${previousLesson.id}`}>Back</Link>
         )}
         <h1>{lesson.title}</h1>
-        <VideoEmbed url={lesson.videoUrl} />
+        <VideoEmbed.Youtube url={lesson.videoUrl} />
         <div>{lesson.description}</div>
         {/* {activeLesson} */}
         {nextLesson ? (
@@ -39,26 +39,26 @@ export default function Lesson(props) {
           <Link to={`/my-courses/${lesson.courseId}`}>Go to course page</Link>
         )}
         {lesson.completed ? <h3>Done:YES</h3> : <h3>Done:NOT</h3>}
-        <Button
+        <Button.PrimaryDefault
           onClick={() => {
             dispatch(toggleLessonAsDone(lesson.id))
           }}
         >
           TOGGLE LESSON as completed
-        </Button>
+        </Button.PrimaryDefault>
 
         {lesson.toDo ? (
           <h3>Marked as later:YES</h3>
         ) : (
           <h3>Marked as later:NOT</h3>
         )}
-        <Button
+        <Button.PrimaryDefault
           onClick={() => {
             dispatch(toggleLessonAsTodo(lesson.id))
           }}
         >
           TOGGLE LESSON as check later
-        </Button>
+        </Button.PrimaryDefault>
       </CourseContainer>
     </Layout>
   )
