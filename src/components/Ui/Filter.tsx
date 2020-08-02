@@ -28,9 +28,13 @@ const Container = styled.div`
   display: flex;
   overflow-x: scroll;
   overflow-y: hidden;
+  flex-wrap: nowrap;
   white-space: nowrap;
   justify-content: flex-start;
   padding: 10px 30px 10px 0px;
+  &::-webkit-scrollbar {
+    display: none;
+  }
 `
 export default {
   Item,
