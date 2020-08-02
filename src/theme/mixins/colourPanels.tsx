@@ -25,8 +25,26 @@ const coloredContrast = css`
   border: 1px solid ${props => props.theme.contrast_primary};
 `
 
+const flatPrimary = css`
+  background: ${props => props.theme.primary};
+  color: white;
+`
+const flatContrast = css`
+  background: ${props => props.theme.contrast_primary};
+  color: white;
+`
+const flatDefault = css`
+  background: ${props => props.theme.default_primary};
+  color: black;
+`
+
 export default {
   primary: coloredPrimary,
   default: coloredDefault,
   contrast: coloredContrast,
+  flat: {
+    primary: flatPrimary,
+    contrast: flatContrast,
+    default: flatDefault,
+  },
 }
