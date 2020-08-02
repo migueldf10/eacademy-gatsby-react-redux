@@ -1,15 +1,7 @@
 import React from "react"
 import styled from "styled-components"
 import mixins from "../../theme/mixins"
-
-export const Button = styled.button`
-  ${mixins.colored.primary}
-  ${mixins.shadowed.default.small}
-  padding: 10px 20px;
-  border-radius: 5px;
-  color: ${props => props.theme.lighterTwo};
-  font-weight: 700;
-`
+import Buttons from "./Buttons"
 
 export const Container = styled.section`
   grid-column: LS / RS 1;
@@ -38,3 +30,5 @@ export function VideoEmbed(props: videoProps) {
     />
   )
 }
+
+export const Button = Buttons

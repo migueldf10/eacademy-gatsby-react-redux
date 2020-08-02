@@ -1,8 +1,8 @@
 import { css } from "styled-components"
 
 const shadowPrimarySmall = css`
-  box-shadow: 4px 4px 4px ${props => props.theme.darkerOne},
-    -2px -2px 2px ${props => props.theme.lighterOne};
+  box-shadow: 2px 2px 4px -1px ${props => props.theme.darkerOne},
+    -1px -1px 2px -1px ${props => props.theme.lighterTwo};
 `
 const shadowPrimaryLarge = css`
   box-shadow: 6px 6px 6px ${props => props.theme.darkerOne},
@@ -10,8 +10,8 @@ const shadowPrimaryLarge = css`
 `
 
 const shadowDefaultSmall = css`
-  box-shadow: 2px 2px 3px ${props => props.theme.default_darkerOne},
-    -1px -1px 2px ${props => props.theme.default_lighterTwo};
+  box-shadow: 2px 2px 3px ${props => props.theme.default_darkerTwo},
+    -1px -1px 2px ${props => props.theme.default_lighterOne};
 `
 const shadowDefaultLarge = css`
   box-shadow: 6px 6px 6px ${props => props.theme.default_darkerOne},

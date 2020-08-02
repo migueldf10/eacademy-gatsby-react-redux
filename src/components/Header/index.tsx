@@ -31,9 +31,9 @@ const Header = ({ siteTitle }) => {
               </a>
             </>
           ) : (
-            <Button as={Link} to="/account">
+            <Button.ContrastPrimary as={Link} to="/account">
               Login
-            </Button>
+            </Button.ContrastPrimary>
           )}
         </Styled.Navigation>
       </Styled.Container>
