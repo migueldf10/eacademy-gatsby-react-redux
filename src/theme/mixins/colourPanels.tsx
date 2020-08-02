@@ -28,5 +28,5 @@ const coloredContrast = css`
 export default {
   primary: coloredPrimary,
   default: coloredDefault,
-  constrast: coloredContrast,
+  contrast: coloredContrast,
 }
