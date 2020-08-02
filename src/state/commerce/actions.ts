@@ -4,6 +4,7 @@ export const REMOVE_FROM_CART = "REMOVE_FROM_CART"
 export const INIT_CHECKOUT = "INIT_CHECKOUT"
 export const FINISH_CHECKOUT = "FINISH_CHECKOUT"
 export const STOP_CHECKOUT = "STOP_CHECKOUT"
+import { setSession } from "../session/actions"
 
 export const addToCart = product => {
   console.log("HEEEY YOU WANT TO BUY!")
@@ -52,6 +53,7 @@ export const finishCheckout = id => async (dispatch, getState) => {
     ).put(`/orders/success`, { id })
 
     dispatch({ type: FINISH_CHECKOUT, payload: {} })
+    dispatch(setSession())
 
     console.log(orderFinished)
   } catch (e) {
