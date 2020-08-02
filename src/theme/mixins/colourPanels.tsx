@@ -11,9 +11,10 @@ const coloredPrimary = css`
 const coloredDefault = css`
   background: linear-gradient(
     135deg,
-    ${props => props.theme.default_lighterOne},
-    ${props => props.theme.default_primary}
+    white,
+    ${props => props.theme.default_lighterTwo}
   );
+  color: black;
   border: 1px solid ${props => props.theme.default_primary};
 `
 const coloredContrast = css`

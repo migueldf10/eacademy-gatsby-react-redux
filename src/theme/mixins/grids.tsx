@@ -23,6 +23,12 @@ const grid = css`
   }
 `
 
+const centered = css`
+  ${grid};
+  grid-template-rows: auto 1fr auto 1fr;
+`
+
 export default {
   basic: grid,
+  centered: centered,
 }

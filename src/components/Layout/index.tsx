@@ -21,15 +21,6 @@ declare global {
 }
 
 const Layout = props => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
   const { children } = props
   const isActiveCheckout = useSelector(getUiState).activeCheckout
   const theme = "blue"
@@ -40,10 +31,10 @@ const Layout = props => {
 
   return (
     <ThemeProvider theme={themes[theme]}>
+      <Cart />
       <AppContainer>
         <AdminBar />
-        <Header siteTitle={data.site.siteMetadata.title} />
-        <Cart />
+        <Header />
         {children}
         <Footer />
       </AppContainer>
