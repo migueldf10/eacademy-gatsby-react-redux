@@ -6,6 +6,7 @@ import { addToCart } from "../../state/commerce/actions"
 import { useDispatch } from "react-redux"
 import { Hero } from "../../components/Ui"
 import locales from "../../utils/locales"
+
 export default function coursePage(props) {
   const { course } = props.pageContext
   const dispatch = useDispatch()
