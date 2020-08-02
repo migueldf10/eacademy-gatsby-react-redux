@@ -24,6 +24,11 @@ const shadowDefaulLighttLarge = css`
   box-shadow: 4px 4px 6px 2px ${props => props.theme.default_lighterOne};
 `
 
+const innerPrimary = css`
+  box-shadow: inset -2px -2px 2px ${props => props.theme.lighterTwo},
+    inset 2px 2px 4px ${props => props.theme.darkerOne};
+`
+
 export default {
   primary: {
     small: shadowPrimarySmall,
@@ -36,5 +41,8 @@ export default {
   defaultLight: {
     small: shadowDefaultLightSmall,
     large: shadowDefaulLighttLarge,
+  },
+  inner: {
+    primary: innerPrimary,
   },
 }
