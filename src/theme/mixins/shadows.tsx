@@ -17,6 +17,12 @@ const shadowDefaultLarge = css`
   box-shadow: 6px 6px 6px ${props => props.theme.default_darkerOne},
     -3px -3px 3px ${props => props.theme.default_lighterOne};
 `
+const shadowDefaultLightSmall = css`
+  box-shadow: 1px 1px 3px 2px ${props => props.theme.default_lighterOne};
+`
+const shadowDefaulLighttLarge = css`
+  box-shadow: 4px 4px 6px 2px ${props => props.theme.default_lighterOne};
+`
 
 export default {
   primary: {
@@ -26,5 +32,9 @@ export default {
   default: {
     small: shadowDefaultSmall,
     large: shadowDefaultLarge,
+  },
+  defaultLight: {
+    small: shadowDefaultLightSmall,
+    large: shadowDefaulLighttLarge,
   },
 }

@@ -1,7 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import mixins from "../../theme/mixins"
-import Buttons from "./Buttons"
+import Buttons from "./Button"
+import Heros from "./Hero"
 
 export const Container = styled.section`
   grid-column: LS / RS 1;
@@ -32,3 +33,4 @@ export function VideoEmbed(props: videoProps) {
 }
 
 export const Button = Buttons
+export const Hero = Heros

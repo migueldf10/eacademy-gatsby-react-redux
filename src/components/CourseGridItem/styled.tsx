@@ -4,7 +4,7 @@ import mixins from "../../theme/mixins"
 export const CardContainer = styled.div`
   padding: 40px 0px;
   ${mixins.colored.contrast}
-  ${mixins.shadowed.default.large}
+  ${mixins.shadowed.defaultLight.large}
   display: block;
   margin-bottom: 50px;
   border-radius: 14px;
