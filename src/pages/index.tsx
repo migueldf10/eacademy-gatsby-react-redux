@@ -13,7 +13,7 @@ const IndexPage = props => {
   return (
     <Layout>
       <SEO title="Home" />
-      <Hero.Primary>
+      <Hero.Wrapper>
         <Hero.Heading>{locales("index.hero.title")}</Hero.Heading>
         <Hero.Body>
           <p>{locales("index.hero.content")}</p>
@@ -26,7 +26,7 @@ const IndexPage = props => {
             <Filter.Item>Level B1</Filter.Item>
           </Filter.Container>
         </Hero.Footer>
-      </Hero.Primary>
+      </Hero.Wrapper>
 
       <Container>
         <h2>{locales("ui.allCourses")}</h2>

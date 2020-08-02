@@ -1,10 +1,11 @@
 import React from "react"
 import Layout from "../../components/Layout"
-import { CourseContainer } from "./styled"
+import Styled from "./styled"
 import { Button, VideoEmbed } from "../../components/Ui"
 import { addToCart } from "../../state/commerce/actions"
 import { useDispatch } from "react-redux"
-
+import { Hero } from "../../components/Ui"
+import locales from "../../utils/locales"
 export default function coursePage(props) {
   const { course } = props.pageContext
   const dispatch = useDispatch()
@@ -15,16 +16,23 @@ export default function coursePage(props) {
 
   return (
     <Layout>
-      <CourseContainer>
-        <h1>{course.title}</h1>
-        <VideoEmbed url={course.videoUrl} />
+      <Hero.WrapperWithOverlap>
+        <Hero.Overline center>
+          {locales("onlineCourses.overline")}
+        </Hero.Overline>
+        <Hero.Heading center>{course.title}</Hero.Heading>
+      </Hero.WrapperWithOverlap>
+      <Styled.Container>
+        <Styled.IntroFrame>
+          <VideoEmbed.Youtube url={course.videoUrl} />
+        </Styled.IntroFrame>
         <p>{course.price} Euros</p>
         <p>State: {course.published ? "Published" : "Draft"}</p>
         <p>{course.description}</p>
         <Button.ContrastPrimary onClick={addToCartAction}>
-          Add to cart
+          {locales("cart.addToCart")}
         </Button.ContrastPrimary>
-      </CourseContainer>
+      </Styled.Container>
     </Layout>
   )
 }
