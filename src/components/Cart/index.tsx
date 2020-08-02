@@ -22,14 +22,18 @@ export default function Cart() {
         <Header />
         <Styled.Separator />
         <Styled.Container>
-          <span className="title">{locales("cart.title")}</span>
+          <Styled.Title>
+            <h1 className="title">{locales("cart.title")}</h1>
+          </Styled.Title>
           <ul>
             {cart.map((cartItem, index) => (
               <CartLineItem key={index} product={cartItem} />
             ))}
           </ul>
+          <Styled.Summary>
+            <h3>Total: {cart.reduce((a, b) => a + b.price, 0)}€</h3>
+          </Styled.Summary>
           <Styled.Footer>
-            <span>Total: {cart.reduce((a, b) => a + b.price, 0)}</span>
             <Button.PrimaryDefault onClick={startOrder}>
               Start the order!
             </Button.PrimaryDefault>

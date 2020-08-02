@@ -10,10 +10,10 @@ export default function CartLineItem({ product }) {
   }
   return (
     <Styled.LineItem>
-      {product.title} -{" "}
-      <span className={"price"}>
-        {product.price} E<button onClick={removeItem}>x</button>
-      </span>
+      <h4>{product.title}</h4>
+      <span className={"price"}>{product.price} €</span>
+      <div />
+      <Styled.RemoveButton onClick={removeItem}>X</Styled.RemoveButton>
     </Styled.LineItem>
   )
 }
