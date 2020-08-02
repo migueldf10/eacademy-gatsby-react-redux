@@ -11,7 +11,7 @@ export default function AdminBar() {
   return (
     <Styled.Wrapper>
       <Styled.Container>
-        <h3>This is the admin bar</h3>
+        <h3 style={{ margin: "0px" }}>This is the admin bar</h3>
         <Button>EDIT</Button>
       </Styled.Container>
     </Styled.Wrapper>
