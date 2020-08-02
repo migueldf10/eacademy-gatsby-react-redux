@@ -15,7 +15,10 @@ const Heading = styled.h1`
   grid-column: LXL / RXL 1;
   font-size: 4rem;
   @media (max-width: 500px) {
-    font-size: 3rem;
+    font-size: 2.1rem;
+  }
+  @media (max-width: 360px) {
+    font-size: 1.8rem;
   }
 `
 

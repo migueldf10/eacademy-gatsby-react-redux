@@ -19,10 +19,12 @@ const IndexPage = props => {
           <p>{locales("index.hero.content")}</p>
         </Hero.Body>
         <Hero.Footer>
-          <Filter.Item pressed>All levels</Filter.Item>
-          <Filter.Item>Level A1</Filter.Item>
-          <Filter.Item>Level A2</Filter.Item>
-          <Filter.Item>Level B1</Filter.Item>
+          <Filter.Container>
+            <Filter.Item pressed>All levels</Filter.Item>
+            <Filter.Item>Level A1</Filter.Item>
+            <Filter.Item>Level A2</Filter.Item>
+            <Filter.Item>Level B1</Filter.Item>
+          </Filter.Container>
         </Hero.Footer>
       </Hero.Primary>
 
