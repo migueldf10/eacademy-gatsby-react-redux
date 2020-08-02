@@ -23,7 +23,7 @@ const Heading = styled.h1`
   @media (max-width: 360px) {
     font-size: 1.8rem;
   }
-  ${props =>
+  ${(props: any) =>
     props.center &&
     css`
       text-align: center;
@@ -48,7 +48,7 @@ const Overline = styled.div`
   grid-column: LS / RS 1;
   text-transform: uppercase;
   font-weight: 700;
-  ${props =>
+  ${(props: any) =>
     props.center &&
     css`
       text-align: center;
