@@ -11,7 +11,14 @@ h4,
 h5,
 h6,
 p,
+a,
 span,
 button {
   font-family: "Quicksand", sans-serif;
+}
+
+a:visited,
+a {
+  color: inherit;
+  text-decoration: none;
 }
