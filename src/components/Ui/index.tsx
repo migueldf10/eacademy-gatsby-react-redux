@@ -3,7 +3,7 @@ import styled from "styled-components"
 import mixins from "../../theme/mixins"
 import Buttons from "./Button"
 import Heros from "./Hero"
-
+import Filters from "./Filter"
 export const Container = styled.section`
   grid-column: LS / RS 1;
   padding: 60px 0;
@@ -34,3 +34,4 @@ export function VideoEmbed(props: videoProps) {
 
 export const Button = Buttons
 export const Hero = Heros
+export const Filter = Filters
