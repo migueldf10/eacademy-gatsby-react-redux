@@ -1,21 +1,32 @@
-import React from "react"
+import React, { useState } from "react"
 import { Link, graphql } from "gatsby"
 import Layout from "../components/Layout"
 import SEO from "../components/Seo"
 import CourseGridItem from "../components/CourseGridItem"
 import locales from "../utils/locales"
-import { Container } from "../components/Ui"
+import { Container, Hero, Filter } from "../components/Ui"
 
 const IndexPage = props => {
   const { pages } = props.data
+  const [filter, set_filter] = useState("")
 
   return (
     <Layout>
       <SEO title="Home" />
-      <Container>
-        <h1>{locales("index.hero.title")}</h1>
-        <p>{locales("index.hero.content")}</p>
-      </Container>
+      <Hero.Wrapper>
+        <Hero.Heading>{locales("index.hero.title")}</Hero.Heading>
+        <Hero.Body>
+          <p>{locales("index.hero.content")}</p>
+        </Hero.Body>
+        <Hero.Footer>
+          <Filter.Container>
+            <Filter.Item pressed>All levels</Filter.Item>
+            <Filter.Item>Level A1</Filter.Item>
+            <Filter.Item>Level A2</Filter.Item>
+            <Filter.Item>Level B1</Filter.Item>
+          </Filter.Container>
+        </Hero.Footer>
+      </Hero.Wrapper>
 
       <Container>
         <h2>{locales("ui.allCourses")}</h2>

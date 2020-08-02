@@ -19,16 +19,19 @@ export default function Checkout() {
     <CheckoutWrapper>
       <CheckoutHeader>
         <span>Secured by Miguel xD</span>
-        <Button onClick={cancelOrder}>Back to shop</Button>
+        <Button.PrimaryDefault onClick={cancelOrder}>
+          Back to shop
+        </Button.PrimaryDefault>
       </CheckoutHeader>
       <CheckoutContainer>
         <form>
           <input placeholder={"Field 1"} />
           <input placeholder={"Field 2"} />
         </form>
-        <Button onClick={finishOrder}>Finish checkout</Button>
+        <Button.PrimaryDefault onClick={finishOrder}>
+          Finish checkout
+        </Button.PrimaryDefault>
       </CheckoutContainer>
-      <CheckoutContainer></CheckoutContainer>
     </CheckoutWrapper>
   )
 }

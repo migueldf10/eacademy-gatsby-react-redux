@@ -8,9 +8,16 @@ export default {
 
 	},
 	ui: {
-		allCourses: 'Our courses'
+		allCourses: 'Our courses',
+		myAccount: 'My account',
+		login: 'Log in',
 	},
 	cart: {
-		title: 'Your shopping bag:'
-	}
+		title: 'Your shopping bag:',
+		addToCart: 'Add to basket',
+	},
+	onlineCourses: {
+		overline: 'Online grammar course',
+		price: 'Online grammar course',
+	},
 }

@@ -1,7 +1,7 @@
 import React from "react"
 import { useSelector, useDispatch } from "react-redux"
 import { removeFromCart } from "../../../state/commerce/actions"
-import { CartLineItemContainer } from "../styled"
+import Styled from "../styled"
 
 export default function CartLineItem({ product }) {
   const dispatch = useDispatch()
@@ -9,11 +9,11 @@ export default function CartLineItem({ product }) {
     dispatch(removeFromCart(product.id))
   }
   return (
-    <CartLineItemContainer>
-      {product.title} -{" "}
-      <span className={"price"}>
-        {product.price} E<button onClick={removeItem}>x</button>
-      </span>
-    </CartLineItemContainer>
+    <Styled.LineItem>
+      <h4>{product.title}</h4>
+      <span className={"price"}>{product.price} €</span>
+      <div />
+      <Styled.RemoveButton onClick={removeItem}>X</Styled.RemoveButton>
+    </Styled.LineItem>
   )
 }
