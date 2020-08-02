@@ -8,7 +8,6 @@ import {
   toggleLessonAsDone,
 } from "../../state/lesson/actions"
 import { getActiveLesson } from "../../state/lesson/selectors"
-import LessonGridItem from "../../components/LessonGridItem"
 import { Link } from "@reach/router"
 import { VideoEmbed, Button } from "../../components/Ui"
 import {Hero} from '../../components/Ui'
@@ -74,6 +73,8 @@ export default function Lesson(props) {
         >
           TOGGLE LESSON as completed
         </Button.PrimaryDefault>
+        <Link to={`/my-courses/${lesson.courseId}`}>Go to course page</Link>
+
       </Styled.Container>
     </Layout>
   )
