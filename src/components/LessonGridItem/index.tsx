@@ -27,12 +27,16 @@ export default function LessonGridItem(props) {
           </div>
         )}
       </LessonGridItemContainer>
-      <Button onClick={() => dispatch(toggleLessonAsTodo(lesson.id))}>
+      <Button.PrimaryDefault
+        onClick={() => dispatch(toggleLessonAsTodo(lesson.id))}
+      >
         Toggle TODO
-      </Button>
-      <Button onClick={() => dispatch(toggleLessonAsDone(lesson.id))}>
+      </Button.PrimaryDefault>
+      <Button.PrimaryDefault
+        onClick={() => dispatch(toggleLessonAsDone(lesson.id))}
+      >
         Toggle As finished
-      </Button>
+      </Button.PrimaryDefault>
     </>
   )
 }

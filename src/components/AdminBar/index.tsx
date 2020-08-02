@@ -12,7 +12,7 @@ export default function AdminBar() {
     <Styled.Wrapper>
       <Styled.Container>
         <h3 style={{ margin: "0px" }}>This is the admin bar</h3>
-        <Button>EDIT</Button>
+        <Button.PrimaryDefault>EDIT</Button.PrimaryDefault>
       </Styled.Container>
     </Styled.Wrapper>
   )

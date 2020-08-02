@@ -21,7 +21,9 @@ export default function coursePage(props) {
         <p>{course.price} Euros</p>
         <p>State: {course.published ? "Published" : "Draft"}</p>
         <p>{course.description}</p>
-        <Button onClick={addToCartAction}>Add to cart</Button>
+        <Button.ContrastPrimary onClick={addToCartAction}>
+          Add to cart
+        </Button.ContrastPrimary>
       </CourseContainer>
     </Layout>
   )
