@@ -18,7 +18,7 @@ export default function LessonGridItem(props) {
         <Styled.Title completed={lesson.completed?true:false}>
 
           <Link to={`/lessons/${lesson.id}`}>
-  {index}-{lesson.title}
+  {index+1}-{lesson.title}
           </Link>
         </Styled.Title>
         <Styled.Controls>

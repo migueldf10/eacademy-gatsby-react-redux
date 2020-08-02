@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import Layout from "../../components/Layout"
-import { CourseContainer } from "./styled"
+import  Styled  from "./styled"
 import { useDispatch, useSelector } from "react-redux"
 import {
   setActiveLesson,
@@ -11,6 +11,7 @@ import { getActiveLesson } from "../../state/lesson/selectors"
 import LessonGridItem from "../../components/LessonGridItem"
 import { Link } from "@reach/router"
 import { VideoEmbed, Button } from "../../components/Ui"
+import {Hero} from '../../components/Ui'
 
 export default function Lesson(props) {
   const { lessonId } = props
@@ -25,27 +26,34 @@ export default function Lesson(props) {
 
   return (
     <Layout>
-      <CourseContainer>
-        {previousLesson && (
-          <Link to={`/lessons/${previousLesson.id}`}>Back</Link>
-        )}
+      <Hero.WrapperWithOverlap>
+            
+        <Styled.ControlBar completed={lesson.completed?true:false}>
+
         <h1>{lesson.title}</h1>
-        <VideoEmbed.Youtube url={lesson.videoUrl} />
-        <div>{lesson.description}</div>
-        {/* {activeLesson} */}
+
         {nextLesson ? (
-          <Link to={`/lessons/${nextLesson.id}`}>Next</Link>
-        ) : (
-          <Link to={`/my-courses/${lesson.courseId}`}>Go to course page</Link>
-        )}
-        {lesson.completed ? <h3>Done:YES</h3> : <h3>Done:NOT</h3>}
-        <Button.PrimaryDefault
-          onClick={() => {
-            dispatch(toggleLessonAsDone(lesson.id))
-          }}
-        >
-          TOGGLE LESSON as completed
-        </Button.PrimaryDefault>
+          <Styled.Navigation
+            as={Link}
+            to={`/lessons/${nextLesson.id}`}
+            onClick={() => {
+              dispatch(toggleLessonAsDone(lesson.id))
+            }}
+          >
+          Complete & Next ->
+        </Styled.Navigation>
+          ) : (
+            <Link to={`/my-courses/${lesson.courseId}`}>Go to course page</Link>
+            )}
+        
+          </Styled.ControlBar>
+      </Hero.WrapperWithOverlap>
+      <Styled.Container>
+
+        <VideoEmbed.Youtube url={lesson.videoUrl} />
+        {/* {activeLesson} */}
+        <div>{lesson.description}</div>
+
 
         {lesson.toDo ? (
           <h3>Marked as later:YES</h3>
@@ -59,7 +67,14 @@ export default function Lesson(props) {
         >
           TOGGLE LESSON as check later
         </Button.PrimaryDefault>
-      </CourseContainer>
+        <Button.PrimaryDefault
+          onClick={() => {
+            dispatch(toggleLessonAsDone(lesson.id))
+          }}
+        >
+          TOGGLE LESSON as completed
+        </Button.PrimaryDefault>
+      </Styled.Container>
     </Layout>
   )
 }
