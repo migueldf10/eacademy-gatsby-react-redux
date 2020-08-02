@@ -7,6 +7,8 @@ import { Button } from "../Ui"
 import locales from "../../utils/locales"
 import CartLineItem from "./components/CartLineItem"
 import Header from "../Header"
+import { getUser } from "../../state/session/selectors"
+import { login, logout, isAuthenticated, getProfile } from "../../utils/auth"
 
 export default function Cart() {
   const cart = useSelector(getCart)
@@ -15,6 +17,7 @@ export default function Cart() {
     console.log("starting order")
     dispatch(initiateCheckout())
   }
+  const user = useSelector(getUser)
 
   if (cart.length > 0) {
     return (
@@ -34,9 +37,15 @@ export default function Cart() {
             <h3>Total: {cart.reduce((a, b) => a + b.price, 0)}€</h3>
           </Styled.Summary>
           <Styled.Footer>
-            <Button.PrimaryDefault onClick={startOrder}>
-              Start the order!
-            </Button.PrimaryDefault>
+            {user.nickname ? (
+              <Button.PrimaryDefault onClick={startOrder}>
+                Start the order!
+              </Button.PrimaryDefault>
+            ) : (
+              <Button.PrimaryDefault onClick={() => login()}>
+                Login or create an account
+              </Button.PrimaryDefault>
+            )}
           </Styled.Footer>
         </Styled.Container>
         <Styled.Separator />
