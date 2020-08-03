@@ -16,7 +16,7 @@ const VideoWrapper = styled.iframe`
 
 function Youtube(props: videoProps) {
   const { url } = props
-  const embedUrl = `http://www.youtube.com/embed/${
+  const embedUrl = `https://www.youtube.com/embed/${
     url.split("=")[1]
   }?autoplay=1`
 
