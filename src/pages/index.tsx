@@ -33,7 +33,12 @@ const IndexPage = props => {
         {pages.edges &&
           pages.edges.length > 0 &&
           pages.edges
-            .filter(node => node.node.context.course !== null)
+            .filter(node => {
+              if (node && node.node && node.node.context)
+                return node.node.context.course !== null
+
+              return null
+            })
             .map(course => (
               <CourseGridItem
                 course={course.node.context.course}
