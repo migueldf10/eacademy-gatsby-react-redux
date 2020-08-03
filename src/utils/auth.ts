@@ -6,10 +6,10 @@ const isBrowser = typeof window !== "undefined"
 
 const auth: any = isBrowser
   ? new auth0.WebAuth({
-      domain: process.env.AUTH0_DOMAIN,
-      clientID: process.env.AUTH0_CLIENTID,
-      redirectUri: process.env.AUTH0_CALLBACK,
-      audience: process.env.AUTH0_AUDIENCE,
+      domain: process.env.GATSBY_AUTH0_DOMAIN,
+      clientID: process.env.GATSBY_AUTH0_CLIENTID,
+      redirectUri: process.env.GATSBY_AUTH0_CALLBACK,
+      audience: process.env.GATSBY_AUTH0_AUDIENCE,
       responseType: "token id_token",
       scope: "openid profile email",
     })

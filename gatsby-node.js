@@ -1,5 +1,5 @@
 const axios = require('axios');
-const get = endpoint => axios.get(`${process.env.API_URL}${endpoint}`);
+const get = endpoint => axios.get(`${process.env.GATSBY_API_URL}${endpoint}`);
 
 exports.createPages = async ({ actions: { createPage } }) => {
 	try {
