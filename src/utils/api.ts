@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const API = "http://localhost:4000"
+const API = process.env.API_URL
 
 export default function buildAxios(jwt) {
   return axios.create({
