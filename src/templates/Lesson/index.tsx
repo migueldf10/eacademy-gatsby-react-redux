@@ -41,7 +41,9 @@ export default function Lesson(props) {
               Done&Next ->
             </Styled.Navigation>
           ) : (
-            <Link to={`/my-courses/${lesson.courseId}`}>Go to course page</Link>
+            <Styled.Navigation as={Link} to={`/my-courses/${lesson.courseId}`}>
+              Go to course page{" "}
+            </Styled.Navigation>
           )}
         </Styled.ControlBar>
       </Hero.WrapperWithOverlap>
