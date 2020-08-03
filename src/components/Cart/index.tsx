@@ -46,14 +46,18 @@ export default function Cart() {
                 </Button.PrimaryDefault>
               </>
             ) : (
-              <>
+              <Styled.Actions>
+                <div>
+                  <h5>Finish your purchase</h5>
+                  <h5>Step 1:</h5>
+                </div>
                 <Button.PrimaryDefault onClick={() => login()}>
-                  Login or create an account
+                  <span>Login or create an account</span>
                 </Button.PrimaryDefault>
-                <Button.PrimaryDefault onClick={() => dispatch(hideCart())}>
-                  Keep buying
-                </Button.PrimaryDefault>
-              </>
+                <Button.SecondaryPrimary onClick={() => dispatch(hideCart())}>
+                  <span>Keep buying</span>
+                </Button.SecondaryPrimary>
+              </Styled.Actions>
             )}
           </Styled.Footer>
         </Styled.Container>
