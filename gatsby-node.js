@@ -41,7 +41,6 @@ exports.createPages = async ({ actions: { createPage } }) => {
 				}]
 
 			}
-			console.log('creating pages programmatically with this data', dummyCourse)
 			createPage({
 				path: `/courses/${dummyCourse.id}`,
 				component: require.resolve('./src/templates/Course/index.tsx'),

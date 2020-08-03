@@ -1,5 +1,4 @@
 export const getActiveCourse = state => {
-  console.log("state,course", state.course.lessons)
   // if (state.course.lessons) {
   //   return state.course
   // }

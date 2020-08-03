@@ -43,7 +43,6 @@ export const login = () => {
       cart: "cart",
     })
   )
-  console.log(window.location.href)
 
   auth.authorize()
 }
@@ -87,8 +86,6 @@ export const getToken = () => {
 }
 
 export const silentAuth = callback => {
-  console.log("running silent auth")
-  console.log("is authenticate?", isAuthenticated())
   if (!isAuthenticated()) return callback()
 
   auth.checkSession({}, setSession(callback))
