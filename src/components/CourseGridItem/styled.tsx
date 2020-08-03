@@ -5,6 +5,9 @@ export const CardContainer = styled.div`
   padding: 40px 0px;
   ${mixins.colored.contrast}
   ${mixins.shadowed.defaultLight.large}
+  * {
+    color: white;
+  }
   display: block;
   margin-bottom: 50px;
   border-radius: 14px;
