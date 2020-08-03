@@ -26,7 +26,7 @@ export const createLesson = lesson => {
       `/lessons`,lesson
     )
     console.log(response.data)
-    dispatch(setActiveCourse(response.data.id))
+    dispatch(setActiveCourse(response.data.courseId))
   }
 }
 
