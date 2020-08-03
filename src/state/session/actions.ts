@@ -7,7 +7,7 @@ export const END_SESSION = "END_SESSION"
 export const setSession = () => {
   const user = getProfile()
   const tokens = getToken()
-  if (tokens && user) {
+  if (tokens && tokens.idToken && user) {
     return async (dispatch, getState) => {
       try {
         const response = await buildAxios(tokens.idToken).get(`/users`)
@@ -26,6 +26,13 @@ export const setSession = () => {
           },
         })
         // console.log(response.data)
+      } catch (e) {
+        console.log("error", e)
+      }
+    }
+  } else {
+    return async (dispatch, getState) => {
+      try {
       } catch (e) {
         console.log("error", e)
       }
