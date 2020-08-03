@@ -7,6 +7,9 @@ export const END_SESSION = "END_SESSION"
 export const setSession = () => {
   const user = getProfile()
   const tokens = getToken()
+  console.log("fetching a session now")
+  console.log("user", user)
+  console.log("tokens", tokens)
   if (tokens && tokens.idToken && user) {
     return async (dispatch, getState) => {
       try {
