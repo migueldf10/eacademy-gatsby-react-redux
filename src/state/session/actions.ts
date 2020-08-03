@@ -20,12 +20,16 @@ export const setSession = () => {
             user,
             tokens,
             courses: response.data.courses,
-            todoLessons: response.data.todoLessons.map(
-              todoLesson => todoLesson.lessonId
-            ),
-            completedLessons: response.data.completedLessons.map(
-              lesson => lesson.lessonId
-            ),
+            todoLessons:
+              response.data.todoLessons.length > 0
+                ? response.data.todoLessons.map(
+                    todoLesson => todoLesson.lessonId
+                  )
+                : [],
+            completedLessons:
+              response.data.completedLessons.length > 0
+                ? response.data.completedLessons.map(lesson => lesson.lessonId)
+                : [],
           },
         })
         // console.log(response.data)
