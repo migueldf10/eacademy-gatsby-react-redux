@@ -46,7 +46,7 @@ const LineItem = styled.li`
   list-style: none;
   border-top: 1px solid gray;
   display: grid;
-  grid-template-columns: minmax(200px, 1fr) auto 4fr 16px;
+  grid-template-columns: minmax(180px, 1fr) 34px 4fr auto;
   align-items: center;
   padding: 16px 6px 16px 6px;
   background: ${props => props.theme.default_lighterTwo};
@@ -54,7 +54,9 @@ const LineItem = styled.li`
   span,
   div,
   button {
+    margin: 0;
   }
+  border-bottom: 1px solid ${props => props.theme.default_halfUp};
 `
 
 const RemoveButton = styled.button`
