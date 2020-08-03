@@ -1,60 +1,53 @@
-import { Link } from "gatsby"
-import PropTypes from "prop-types"
 import React from "react"
-import { HeaderContainer, HeaderWrapper } from "./styled"
-import { logout } from "../../utils/auth"
+import { Link, useStaticQuery, graphql } from "gatsby"
+import { useSelector, useDispatch } from "react-redux"
+import Styled from "./styled"
+import { login } from "../../utils/auth"
 import { Button } from "../Ui"
 import { getUser } from "../../state/session/selectors"
-import { useSelector } from "react-redux"
+import getLocales from "../../utils/locales"
+import { getUiState } from "../../state/ui/selectors"
+import { showCart } from "../../state/ui/actions"
+import { getCart } from "../../state/commerce/selectors"
 
-const Header = ({ siteTitle }) => {
+const Header = () => {
   const user = useSelector(getUser)
+  const data = useStaticQuery(graphql`
+    query SiteTitleQuery {
+      site {
+        siteMetadata {
+          title
+        }
+      }
+    }
+  `)
+  const { title } = data.site.siteMetadata
+  const uiState = useSelector(getUiState)
+  const cart = useSelector(getCart)
+  const dispatch = useDispatch()
+
   return (
-    <HeaderWrapper>
-      <HeaderContainer>
+    <Styled.Wrapper>
+      <Styled.Container>
         <h1>
-          <Link
-            to="/"
-            style={{
-              color: `white`,
-              textDecoration: `none`,
-            }}
-          >
-            {siteTitle}
-          </Link>
+          <Link to="/">{title}</Link>
         </h1>
-
-        <nav>
+        <Link to="/">Shop</Link>
+        {!uiState.displayCart && cart[0] && cart[0].id && (
+          <a onClick={() => dispatch(showCart())}>Cart</a>
+        )}
+        <Styled.Navigation>
           {user.nickname ? (
-            <>
-              <Link to="/account">Hey {user.nickname} </Link>
-              <a
-                href="#logout"
-                onClick={e => {
-                  logout()
-                  e.preventDefault()
-                }}
-              >
-                Log Out
-              </a>
-            </>
+            <Link to="/account">{getLocales("ui.myAccount")}</Link>
           ) : (
-            <Button as={Link} to="/account">
-              Login
-            </Button>
+            <Button.ContrastPrimary onClick={() => login()}>
+              {getLocales("ui.login")}
+            </Button.ContrastPrimary>
           )}
-        </nav>
-      </HeaderContainer>
-    </HeaderWrapper>
+        </Styled.Navigation>
+      </Styled.Container>
+    </Styled.Wrapper>
   )
-}
-
-Header.propTypes = {
-  siteTitle: PropTypes.string,
-}
-
-Header.defaultProps = {
-  siteTitle: ``,
 }
 
 export default Header

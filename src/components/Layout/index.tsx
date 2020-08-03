@@ -1,5 +1,4 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
 import Header from "../Header"
 import Footer from "../Footer"
 import { AppContainer } from "./styled"
@@ -8,9 +7,11 @@ import { DataLayer } from "../../models/DataLayer"
 import Cart from "../Cart"
 import { useSelector } from "react-redux"
 import { getUiState } from "../../state/ui/selectors"
-import { isAdmin } from "../../state/session/selectors"
 import Checkout from "../Checkout"
-import { Button } from "../Ui"
+import AdminBar from "../AdminBar"
+import { ThemeProvider } from "styled-components"
+import themes from "../../theme"
+
 declare global {
   interface Window {
     dataLayer: DataLayer
@@ -18,31 +19,24 @@ declare global {
 }
 
 const Layout = props => {
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
-  const { children } = props
+  const { children,template } = props
   const isActiveCheckout = useSelector(getUiState).activeCheckout
-  const admin = useSelector(isAdmin)
+  const theme = "blue"
 
   if (isActiveCheckout) {
     return <Checkout />
   }
 
   return (
-    <AppContainer>
-      {admin ? <Button>EDIT</Button> : null}
-      <Header siteTitle={data.site.siteMetadata.title} />
+    <ThemeProvider theme={themes[theme]}>
       <Cart />
-      {children}
-      <Footer />
-    </AppContainer>
+      <AppContainer>
+        <AdminBar template={template}/>
+        <Header />
+        {children}
+        <Footer />
+      </AppContainer>
+    </ThemeProvider>
   )
 }
 

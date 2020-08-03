@@ -5,12 +5,16 @@ import { useDispatch, useSelector } from "react-redux"
 import { setActiveCourse } from "../../state/course/actions"
 import { getActiveCourse } from "../../state/course/selectors"
 import LessonGridItem from "../../components/LessonGridItem"
+import ReactMarkdown from 'react-markdown'
+import {VideoEmbed} from '../../components/Ui'
 
 export default function MyCourse(props) {
   // const { course } = props.pageContext
   const dispatch = useDispatch()
   const activeCourse = useSelector(getActiveCourse)
   // console.log("activeCourse", activeCourse)
+
+  
   useEffect(() => {
     dispatch(setActiveCourse(props.courseId))
   }, [])
@@ -21,13 +25,21 @@ export default function MyCourse(props) {
   if (!activeCourse.id) return null
 
   return (
-    <Layout>
+    <Layout template={'course'}>
       <CourseContainer>
-        <p>{activeCourse.title}</p>
 
-        {activeCourse.lessons.map(lesson => (
-          <LessonGridItem lesson={lesson} key={lesson.id} />
+        <h1>{activeCourse.title}</h1>
+        {activeCourse.lessons.map((lesson,index) => (
+          <LessonGridItem lesson={lesson} index={index} key={lesson.id} />
         ))}
+        <ReactMarkdown
+                    source={activeCourse.description}
+                    escapeHtml={false}
+                />
+          <span>Price:{activeCourse.price}</span>
+          <VideoEmbed.Youtube url={activeCourse.videoUrl}/>
+
+        
         {/* <h1>{course.title}</h1>
         <VideoEmbed url={course.videoUrl} />
         <p>{course.price} Euros</p>

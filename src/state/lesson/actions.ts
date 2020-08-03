@@ -1,4 +1,6 @@
 import buildAxios from "../../utils/api"
+import { setActiveCourse } from "../course/actions"
+
 export const SET_ACTIVE_LESSON = "SET_ACTIVE_LESSON"
 export const MAKE_LESSON_AS_TODO = "MAKE_LESSON_AS_TODO"
 export const REMOVE_LESSON_AS_TODO = "REMOVE_LESSON_AS_TODO"
@@ -6,6 +8,7 @@ export const MAKE_LESSON_AS_DONE = "MAKE_LESSON_AS_DONE"
 export const REMOVE_LESSON_AS_DONE = "REMOVE_LESSON_AS_DONE"
 
 export const setActiveLesson = lessonId => {
+  console.log("setting the lesson with id active", lessonId)
   return async (dispatch, getState) => {
     const response = await buildAxios(getState().session.tokens.idToken).get(
       `/lessons/${lessonId}`
@@ -14,6 +17,28 @@ export const setActiveLesson = lessonId => {
       type: SET_ACTIVE_LESSON,
       payload: response.data,
     })
+  }
+}
+
+export const createLesson = lesson => {
+  return async (dispatch, getState) => {
+    const response = await buildAxios(getState().session.tokens.idToken).post(
+      `/lessons`,
+      lesson
+    )
+    console.log(response.data)
+    dispatch(setActiveCourse(response.data.courseId))
+  }
+}
+
+export const updateLesson = lesson => {
+  return async (dispatch, getState) => {
+    const response = await buildAxios(getState().session.tokens.idToken).put(
+      `/lessons/${lesson.id}`,
+      lesson
+    )
+    console.log("DATA RETURNED BY BACKEND", response.data)
+    dispatch(setActiveLesson(response.data.id))
   }
 }
 

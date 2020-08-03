@@ -35,6 +35,15 @@ export const login = () => {
   if (!isBrowser) {
     return
   }
+  localStorage.setItem(
+    "session",
+    JSON.stringify({
+      location: window.location.href,
+      redirect: true,
+      cart: "cart",
+    })
+  )
+  console.log(window.location.href)
 
   auth.authorize()
 }
@@ -53,7 +62,11 @@ const setSession = (cb = () => {}) => (err, authResult) => {
     tokens.expiresAt = expiresAt
     user = authResult.idTokenPayload
     localStorage.setItem("isLoggedIn", "true")
-    navigate("/account")
+    const previousSession = JSON.parse(localStorage.getItem("session"))
+    if (previousSession && previousSession.redirect) {
+      navigate(previousSession.location)
+      localStorage.removeItem("session")
+    }
     cb()
   }
 }
@@ -83,5 +96,6 @@ export const silentAuth = callback => {
 
 export const logout = () => {
   localStorage.setItem("isLoggedIn", "false")
+  localStorage.removeItem("session")
   auth.logout()
 }

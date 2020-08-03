@@ -5,14 +5,45 @@ exports.createPages = async ({ actions: { createPage } }) => {
 	try {
 		const response = await get('/course')
 		const courses = response.data.rows
-		courses.map(course => {
+		if (courses && courses.length > 0) {
 
+			courses.map(course => {
+
+				createPage({
+					path: `/courses/${course.id}`,
+					component: require.resolve('./src/templates/Course/index.tsx'),
+					context: { course }
+				});
+			})
+		} else {
+			const dummyCourse = {
+				id: 1,
+				title: 'dummyCourse',
+				description: 'description',
+				price: 1,
+				createdAt: new Date(),
+				published: true,
+				updatedAt: new Date(),
+				videoUrl: 'asdfasdf',
+				lessons: [{
+					description: '',
+					id: 1,
+					priority: 1,
+					published: true,
+					title: 'title',
+					updatedAt: new Date(),
+					videoUrl: 'asdfasdf',
+					createdAt: new Date(),
+					courseId: 1,
+				}]
+
+			}
 			createPage({
-				path: `/courses/${course.id}`,
+				path: `/courses/${dummyCourse.id}`,
 				component: require.resolve('./src/templates/Course/index.tsx'),
-				context: { course }
+				context: { course: dummyCourse }
 			});
-		})
+		}
 	} catch (e) {
 		console.log('error', e)
 	}
