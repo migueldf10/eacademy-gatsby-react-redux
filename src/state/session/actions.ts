@@ -21,12 +21,13 @@ export const setSession = () => {
             tokens,
             courses: response.data.courses,
             todoLessons:
-              response.data.todoLessons.length > 0
+              response.data.todoLessons && response.data.todoLessons.length > 0
                 ? response.data.todoLessons.map(
                     todoLesson => todoLesson.lessonId
                   )
                 : [],
             completedLessons:
+              response.data.completedLessons &&
               response.data.completedLessons.length > 0
                 ? response.data.completedLessons.map(lesson => lesson.lessonId)
                 : [],
