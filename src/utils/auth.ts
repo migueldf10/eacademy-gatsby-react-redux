@@ -94,5 +94,5 @@ export const silentAuth = callback => {
 export const logout = () => {
   localStorage.setItem("isLoggedIn", "false")
   localStorage.removeItem("session")
-  auth.logout()
+  auth.logout({ returnTo: process.env.GATSBY_AUTH0_LOGOUT_URL })
 }
