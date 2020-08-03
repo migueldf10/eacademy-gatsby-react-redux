@@ -5,6 +5,7 @@ import Styled from "./styled"
 import { Button } from "../Ui"
 import EditCourse from "./components/EditCourse"
 import CreateCourse from "./components/CreateCourse"
+import EditLesson from "./components/EditLesson"
 
 function Editor(props) {
   const { template } = props
@@ -14,6 +15,8 @@ function Editor(props) {
       return <EditCourse />
     case "account":
       return <CreateCourse />
+    case "lesson":
+      return <EditLesson />
   }
 }
 

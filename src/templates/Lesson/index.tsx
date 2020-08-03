@@ -11,6 +11,7 @@ import { getActiveLesson } from "../../state/lesson/selectors"
 import { Link } from "@reach/router"
 import { VideoEmbed, Button } from "../../components/Ui"
 import { Hero } from "../../components/Ui"
+import ReactMarkdown from "react-markdown"
 
 export default function Lesson(props) {
   const { lessonId } = props
@@ -24,7 +25,7 @@ export default function Lesson(props) {
   if (!lesson || !lesson.id) return null
 
   return (
-    <Layout>
+    <Layout template={"lesson"}>
       <Hero.WrapperWithOverlap>
         <Styled.ControlBar completed={lesson.completed ? true : false}>
           <h1>{lesson.title}</h1>
@@ -45,9 +46,9 @@ export default function Lesson(props) {
         </Styled.ControlBar>
       </Hero.WrapperWithOverlap>
       <Styled.Container>
-        <VideoEmbed.Youtube url={lesson.videoUrl} />
+        {lesson.videoUrl && <VideoEmbed.Youtube url={lesson.videoUrl} />}
         {/* {activeLesson} */}
-        <div>{lesson.description}</div>
+        <ReactMarkdown source={lesson.description} escapeHtml={false} />
 
         {lesson.toDo ? (
           <h3>Marked as later:YES</h3>
