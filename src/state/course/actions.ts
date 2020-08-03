@@ -13,3 +13,19 @@ export const setActiveCourse = courseId => {
     })
   }
 }
+
+
+export const updateCourse = course => {
+  return async (dispatch, getState) => {
+    try{
+
+      const response = await buildAxios(getState().session.tokens.idToken).put(
+        `/course/${course.id}`,course
+        )
+        console.log(response.data)
+        dispatch(setActiveCourse(response.data.id))
+      } catch (e) {
+        console.log('error',e)
+      }
+  }
+}

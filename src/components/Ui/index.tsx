@@ -5,7 +5,7 @@ import Buttons from "./Button"
 import Heros from "./Hero"
 import Filters from "./Filter"
 import VideoPlayer from "./VideoPlayer"
-
+import Forms from './Form'
 export const Container = styled.section`
   grid-column: LS / RS 1;
   padding: 60px 0;
@@ -18,3 +18,4 @@ export const Button = Buttons
 export const Hero = Heros
 export const Filter = Filters
 export const VideoEmbed = VideoPlayer
+export const Form = Forms

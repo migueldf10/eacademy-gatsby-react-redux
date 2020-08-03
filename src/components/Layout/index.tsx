@@ -1,5 +1,4 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
 import Header from "../Header"
 import Footer from "../Footer"
 import { AppContainer } from "./styled"
@@ -8,7 +7,6 @@ import { DataLayer } from "../../models/DataLayer"
 import Cart from "../Cart"
 import { useSelector } from "react-redux"
 import { getUiState } from "../../state/ui/selectors"
-import { isAdmin } from "../../state/session/selectors"
 import Checkout from "../Checkout"
 import AdminBar from "../AdminBar"
 import { ThemeProvider } from "styled-components"
@@ -21,7 +19,7 @@ declare global {
 }
 
 const Layout = props => {
-  const { children } = props
+  const { children,template } = props
   const isActiveCheckout = useSelector(getUiState).activeCheckout
   const theme = "blue"
 
@@ -33,7 +31,7 @@ const Layout = props => {
     <ThemeProvider theme={themes[theme]}>
       <Cart />
       <AppContainer>
-        <AdminBar />
+        <AdminBar template={template}/>
         <Header />
         {children}
         <Footer />

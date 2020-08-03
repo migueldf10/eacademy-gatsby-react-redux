@@ -23,7 +23,7 @@ export default function MyCourse(props) {
   if (!activeCourse.id) return null
 
   return (
-    <Layout>
+    <Layout template={'course'}>
       <CourseContainer>
         <p>{activeCourse.title}</p>
 
