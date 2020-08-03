@@ -9,3 +9,5 @@ export const isAdmin = state => {
 export const getCourses = state => state.session.courses
 export const getCompletedLessons = state => state.session.completedLessons
 export const getTodoLessons = state => state.session.todoLessons
+
+export const isAlreadyAToken = state =>state.session.user&& state.session.user.tokens && state.session.user.idToken?true:false

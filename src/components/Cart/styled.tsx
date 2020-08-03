@@ -22,6 +22,8 @@ const Container = styled.div`
   padding: 32px 16px;
   position: relative;
   border-radius: 8px;
+  overflow-y: scroll;
+  z-index: 99;
   ul {
     padding: 0px;
     margin: 0px;
@@ -29,6 +31,8 @@ const Container = styled.div`
 `
 const Title = styled.div`
   text-align: center;
+  font-size: 0.7em;
+  padding-bottom: 1rem;
 `
 const Summary = styled.div`
   text-align: center;
@@ -42,18 +46,30 @@ const Footer = styled.div`
   justify-content: space-between;
 `
 
+const Actions = styled.div`
+  text-align: center;
+  div,
+  button {
+    margin-bottom: 16px;
+  }
+`
+
 const LineItem = styled.li`
   list-style: none;
-  border-top: 1px solid gray;
   display: grid;
-  grid-template-columns: minmax(200px, 1fr) auto 4fr 16px;
+  grid-template-columns: minmax(180px, 1fr) 34px 4fr auto;
   align-items: center;
   padding: 16px 6px 16px 6px;
   background: ${props => props.theme.default_lighterTwo};
+  border-top: 1px solid ${props => props.theme.default_halfUp};
   h4,
   span,
   div,
   button {
+    margin: 0;
+  }
+  &:last-child {
+    border-bottom: 1px solid ${props => props.theme.default_halfUp};
   }
 `
 
@@ -72,4 +88,5 @@ export default {
   Separator,
   RemoveButton,
   Summary,
+  Actions,
 }

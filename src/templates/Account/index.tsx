@@ -28,7 +28,7 @@ const AccountTemplate = () => {
   const courses = useSelector(getCourses)
 
   return (
-    <Layout>
+    <Layout template={"account"}>
       <Container>
         <h2>My courses</h2>
         {courses.length > 0 ? (

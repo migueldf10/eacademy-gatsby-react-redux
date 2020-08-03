@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import Layout from "../../components/Layout"
-import  Styled  from "./styled"
+import Styled from "./styled"
 import { useDispatch, useSelector } from "react-redux"
 import {
   setActiveLesson,
@@ -10,7 +10,8 @@ import {
 import { getActiveLesson } from "../../state/lesson/selectors"
 import { Link } from "@reach/router"
 import { VideoEmbed, Button } from "../../components/Ui"
-import {Hero} from '../../components/Ui'
+import { Hero } from "../../components/Ui"
+import ReactMarkdown from "react-markdown"
 
 export default function Lesson(props) {
   const { lessonId } = props
@@ -24,35 +25,32 @@ export default function Lesson(props) {
   if (!lesson || !lesson.id) return null
 
   return (
-    <Layout>
+    <Layout template={"lesson"}>
       <Hero.WrapperWithOverlap>
-            
-        <Styled.ControlBar completed={lesson.completed?true:false}>
+        <Styled.ControlBar completed={lesson.completed ? true : false}>
+          <h1>{lesson.title}</h1>
 
-        <h1>{lesson.title}</h1>
-
-        {nextLesson ? (
-          <Styled.Navigation
-            as={Link}
-            to={`/lessons/${nextLesson.id}`}
-            onClick={() => {
-              dispatch(toggleLessonAsDone(lesson.id))
-            }}
-          >
-          Complete & Next ->
-        </Styled.Navigation>
+          {nextLesson ? (
+            <Styled.Navigation
+              as={Link}
+              to={`/lessons/${nextLesson.id}`}
+              onClick={() => {
+                dispatch(toggleLessonAsDone(lesson.id))
+              }}
+            >
+              Done&Next ->
+            </Styled.Navigation>
           ) : (
-            <Link to={`/my-courses/${lesson.courseId}`}>Go to course page</Link>
-            )}
-        
-          </Styled.ControlBar>
+            <Styled.Navigation as={Link} to={`/my-courses/${lesson.courseId}`}>
+              Go to course page{" "}
+            </Styled.Navigation>
+          )}
+        </Styled.ControlBar>
       </Hero.WrapperWithOverlap>
       <Styled.Container>
-
-        <VideoEmbed.Youtube url={lesson.videoUrl} />
+        {lesson.videoUrl && <VideoEmbed.Youtube url={lesson.videoUrl} />}
         {/* {activeLesson} */}
-        <div>{lesson.description}</div>
-
+        <ReactMarkdown source={lesson.description} escapeHtml={false} />
 
         {lesson.toDo ? (
           <h3>Marked as later:YES</h3>
@@ -74,7 +72,6 @@ export default function Lesson(props) {
           TOGGLE LESSON as completed
         </Button.PrimaryDefault>
         <Link to={`/my-courses/${lesson.courseId}`}>Go to course page</Link>
-
       </Styled.Container>
     </Layout>
   )

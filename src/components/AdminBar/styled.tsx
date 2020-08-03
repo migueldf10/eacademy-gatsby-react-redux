@@ -1,5 +1,5 @@
 import styled from "styled-components"
-
+import mixins from "../../theme/mixins"
 type Props = {
   Wrapper: any
   Container: any
@@ -7,13 +7,13 @@ type Props = {
 
 const AdminBarStyled: Props = { Wrapper: {}, Container: {} }
 
-AdminBarStyled.Wrapper = styled.div`
+const Wrapper = styled.div`
   grid-column: LB / RB 1;
   background: lightgoldenrodyellow;
   padding: 12px 16px;
 `
 
-AdminBarStyled.Container = styled.div`
+const Container = styled.div`
   display: flex;
   flex-direction: row;
   max-width: 960px;
@@ -22,4 +22,17 @@ AdminBarStyled.Container = styled.div`
   justify-content: space-between;
 `
 
-export default AdminBarStyled
+const Editor = styled.div`
+  max-width: 960px;
+  margin: auto;
+  align-items: center;
+  form {
+    display: flex;
+    flex-direction: column;
+  }
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 400px));
+  column-gap: 20px;
+`
+
+export default { Wrapper, Container, Editor }
