@@ -36,15 +36,15 @@ export default function coursePage(props) {
         </Styled.IntroFrame>
         <ReactMarkdown source={course.description} escapeHtml={false} />
         {!alreadyBought ? (
-          <Button.ContrastPrimary onClick={addToCartAction}>
-            {locales("cart.addToCart")}
-          </Button.ContrastPrimary>
+          <Button.ContrastDefault onClick={addToCartAction}>
+            <span>{locales("cart.addToCart")}</span>
+          </Button.ContrastDefault>
         ) : (
           <div>
             <div>You already own this course!</div>
-            <Button.ContrastPrimary as={Link} to={`/my-courses/${course.id}`}>
-              View the course page
-            </Button.ContrastPrimary>
+            <Button.ContrastDefault as={Link} to={`/my-courses/${course.id}`}>
+              <span>View the course page</span>
+            </Button.ContrastDefault>
           </div>
         )}
       </Styled.Container>
