@@ -8,6 +8,7 @@ import { Hero } from "../../components/Ui"
 import locales from "../../utils/locales"
 import { getCourses } from "../../state/session/selectors"
 import { Link } from "@reach/router"
+import ReactMarkdown from "react-markdown"
 
 export default function coursePage(props) {
   const { course } = props.pageContext
@@ -33,9 +34,7 @@ export default function coursePage(props) {
         <Styled.IntroFrame>
           <VideoEmbed.Youtube url={course.videoUrl} />
         </Styled.IntroFrame>
-        <p>{course.price} Euros</p>
-        {/* <p>State: {course.published ? "Published" : "Draft"}</p> */}
-        <p>{course.description}</p>
+        <ReactMarkdown source={course.description} escapeHtml={false} />
         {!alreadyBought ? (
           <Button.ContrastPrimary onClick={addToCartAction}>
             {locales("cart.addToCart")}
