@@ -5,6 +5,11 @@ import {
   MAKE_LESSON_AS_DONE,
   REMOVE_LESSON_AS_DONE,
 } from "../lesson/actions"
+import{
+  UPDATE_COURSE
+} from "../course/actions"
+
+
 const initialState = {
   user: {},
   tokens: {},
@@ -19,6 +24,11 @@ export default (state = initialState, { type, payload }) => {
       return { ...payload }
     case FILL_PROFILE:
       return { ...state }
+    case UPDATE_COURSE:
+      return {...state,courses:state.courses.map(course=>{
+        if(course.id===payload.id)return payload
+        return course
+      })}
 
     case MAKE_LESSON_AS_TODO:
       return { ...state, todoLessons: [...state.todoLessons, payload.lessonId] }

@@ -30,6 +30,9 @@ const Editor = styled.div`
     display:flex;
     flex-direction: column;
   }
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap:20px;
 `
 
 export default {Wrapper,Container,Editor}

@@ -1,6 +1,6 @@
 import buildAxios from "../../utils/api"
-
 export const SET_ACTIVE_COURSE = "SET_ACTIVE_COURSE"
+export const UPDATE_COURSE = "UPDATE_COURSE"
 
 export const setActiveCourse = courseId => {
   return async (dispatch, getState) => {
@@ -24,6 +24,10 @@ export const updateCourse = course => {
         )
         console.log(response.data)
         dispatch(setActiveCourse(response.data.id))
+        dispatch({
+          type:UPDATE_COURSE,
+          payload: response.data
+        })
       } catch (e) {
         console.log('error',e)
       }
