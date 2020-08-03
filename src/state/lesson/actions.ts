@@ -1,4 +1,6 @@
 import buildAxios from "../../utils/api"
+import {setActiveCourse} from '../course/actions'
+
 export const SET_ACTIVE_LESSON = "SET_ACTIVE_LESSON"
 export const MAKE_LESSON_AS_TODO = "MAKE_LESSON_AS_TODO"
 export const REMOVE_LESSON_AS_TODO = "REMOVE_LESSON_AS_TODO"
@@ -16,6 +18,19 @@ export const setActiveLesson = lessonId => {
     })
   }
 }
+
+
+export const createLesson = lesson => {
+  return async (dispatch, getState) => {
+    const response = await buildAxios(getState().session.tokens.idToken).post(
+      `/lessons`,lesson
+    )
+    console.log(response.data)
+    dispatch(setActiveCourse(response.data.id))
+  }
+}
+
+
 
 export const toggleLessonAsTodo = lessonId => {
   return async (dispatch, getState) => {

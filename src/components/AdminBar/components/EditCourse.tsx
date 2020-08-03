@@ -4,6 +4,7 @@ import Styled from '../styled'
 import { useSelector, useDispatch } from 'react-redux'
 import { getActiveCourse } from '../../../state/course/selectors'
 import { updateCourse } from '../../../state/course/actions'
+import { createLesson } from '../../../state/lesson/actions'
 import ReactMarkdown from 'react-markdown'
 import {Form} from '../../Ui'
 
@@ -29,28 +30,22 @@ export default function EditCourse(props) {
             id: activeCourse.id
         }
         dispatch(updateCourse(newCourse))
-        console.log()
 
     }
-    const createLesson = (event) => {
+    const submitNewLesson = (event) => {
         event.preventDefault()
-        const newCourse = {
-            title,
-            price,
-            videoUrl,
-            description,
-            id: activeCourse.id
+        const newLesson = {
+            courseId: activeCourse.id,
+            title:lessonTitle,
         }
-        dispatch(updateCourse(newCourse))
-        console.log()
-
+        dispatch(createLesson(newLesson))
     }
     return (
         <Styled.Editor>
             <div>
 
 
-            <form onSubmit={(e)=>submitForm(e)}>
+            <form onSubmit={(event)=>submitForm(event)}>
                 <label htmlFor='title'>Title:</label>
                 <input onChange={e => set_title(e.target.value)} value={title} id='title' />
                 <label htmlFor='price'>Price:</label>
@@ -62,7 +57,9 @@ export default function EditCourse(props) {
                 <Button.PrimaryPrimary type='submit' style={{marginTop:'32px'}}>Submit</Button.PrimaryPrimary>
             </form>
 
-            <form onSubmit={(e)=>createLesson(e)}>
+           
+           
+            <form onSubmit={(event)=>submitNewLesson(event)}>
                 <label htmlFor='lessonTitle'>New lesson title:</label>
                 <input onChange={e => set_lessonTitle(e.target.value)} value={lessonTitle} id='lessonTitle' />
                 <Button.PrimaryPrimary type='submit' style={{marginTop:'32px'}}>Submit</Button.PrimaryPrimary>
