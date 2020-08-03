@@ -1,5 +1,5 @@
 import styled from "styled-components"
-import mixins from '../../theme/mixins'
+import mixins from "../../theme/mixins"
 type Props = {
   Wrapper: any
   Container: any
@@ -26,13 +26,13 @@ const Editor = styled.div`
   max-width: 960px;
   margin: auto;
   align-items: center;
-  form{
-    display:flex;
+  form {
+    display: flex;
     flex-direction: column;
   }
-  display:grid;
-  grid-template-columns: 1fr 1fr;
-  column-gap:20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(200px, 400px));
+  column-gap: 20px;
 `
 
-export default {Wrapper,Container,Editor}
+export default { Wrapper, Container, Editor }
