@@ -1,4 +1,7 @@
 const axios = require('axios');
+require("dotenv").config({
+	path: `.env.${process.env.NODE_ENV}`,
+})
 const get = endpoint => axios.get(`${process.env.GATSBY_API_URL}${endpoint}`);
 
 exports.createPages = async ({ actions: { createPage } }) => {
@@ -38,6 +41,7 @@ exports.createPages = async ({ actions: { createPage } }) => {
 				}]
 
 			}
+			console.log('creating pages programmatically with this data', dummyCourse)
 			createPage({
 				path: `/courses/${dummyCourse.id}`,
 				component: require.resolve('./src/templates/Course/index.tsx'),
