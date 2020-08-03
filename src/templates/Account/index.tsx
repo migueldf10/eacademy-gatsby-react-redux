@@ -1,6 +1,6 @@
 import React, { useEffect } from "react"
 import Layout from "../../components/Layout"
-import { Container } from "../../components/Ui"
+import { Container, Button } from "../../components/Ui"
 import { Router, RouteComponentProps } from "@reach/router"
 import { Link } from "gatsby"
 import { login, logout, isAuthenticated, getProfile } from "../../utils/auth"
@@ -41,6 +41,9 @@ const AccountTemplate = () => {
         ) : (
           <Link to="/">Buy some courses to start working!</Link>
         )}
+      </Container>
+      <Container>
+        <Button.PrimaryDefault onClick={logout}>Log out</Button.PrimaryDefault>
       </Container>
     </Layout>
   )
