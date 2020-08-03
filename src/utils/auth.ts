@@ -71,12 +71,12 @@ const setSession = (cb = () => {}) => (err, authResult) => {
   }
 }
 
-export const handleAuthentication = () => {
+export const handleAuthentication = callback => {
   if (!isBrowser) {
     return
   }
 
-  auth.parseHash(setSession())
+  auth.parseHash(setSession(callback))
 }
 
 export const getProfile = () => {
