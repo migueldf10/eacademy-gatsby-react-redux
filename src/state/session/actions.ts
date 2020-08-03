@@ -7,7 +7,10 @@ export const END_SESSION = "END_SESSION"
 export const setSession = () => {
   const user = getProfile()
   const tokens = getToken()
-  if (tokens && user) {
+  console.log("fetching a session now")
+  console.log("user", user)
+  console.log("tokens", tokens)
+  if (tokens && tokens.idToken && user) {
     return async (dispatch, getState) => {
       try {
         const response = await buildAxios(tokens.idToken).get(`/users`)
@@ -17,15 +20,27 @@ export const setSession = () => {
             user,
             tokens,
             courses: response.data.courses,
-            todoLessons: response.data.todoLessons.map(
-              todoLesson => todoLesson.lessonId
-            ),
-            completedLessons: response.data.completedLessons.map(
-              lesson => lesson.lessonId
-            ),
+            todoLessons:
+              response.data.todoLessons && response.data.todoLessons.length > 0
+                ? response.data.todoLessons.map(
+                    todoLesson => todoLesson.lessonId
+                  )
+                : [],
+            completedLessons:
+              response.data.completedLessons &&
+              response.data.completedLessons.length > 0
+                ? response.data.completedLessons.map(lesson => lesson.lessonId)
+                : [],
           },
         })
         // console.log(response.data)
+      } catch (e) {
+        console.log("error", e)
+      }
+    }
+  } else {
+    return async (dispatch, getState) => {
+      try {
       } catch (e) {
         console.log("error", e)
       }

@@ -6,10 +6,10 @@ const isBrowser = typeof window !== "undefined"
 
 const auth: any = isBrowser
   ? new auth0.WebAuth({
-      domain: process.env.AUTH0_DOMAIN,
-      clientID: process.env.AUTH0_CLIENTID,
-      redirectUri: process.env.AUTH0_CALLBACK,
-      audience: process.env.AUTH0_AUDIENCE,
+      domain: process.env.GATSBY_AUTH0_DOMAIN,
+      clientID: process.env.GATSBY_AUTH0_CLIENTID,
+      redirectUri: process.env.GATSBY_AUTH0_CALLBACK,
+      audience: process.env.GATSBY_AUTH0_AUDIENCE,
       responseType: "token id_token",
       scope: "openid profile email",
     })
@@ -43,7 +43,6 @@ export const login = () => {
       cart: "cart",
     })
   )
-  console.log(window.location.href)
 
   auth.authorize()
 }
@@ -71,12 +70,12 @@ const setSession = (cb = () => {}) => (err, authResult) => {
   }
 }
 
-export const handleAuthentication = () => {
+export const handleAuthentication = callback => {
   if (!isBrowser) {
     return
   }
 
-  auth.parseHash(setSession())
+  auth.parseHash(setSession(callback))
 }
 
 export const getProfile = () => {
@@ -87,8 +86,6 @@ export const getToken = () => {
 }
 
 export const silentAuth = callback => {
-  console.log("running silent auth")
-  console.log("is authenticate?", isAuthenticated())
   if (!isAuthenticated()) return callback()
 
   auth.checkSession({}, setSession(callback))
@@ -97,5 +94,5 @@ export const silentAuth = callback => {
 export const logout = () => {
   localStorage.setItem("isLoggedIn", "false")
   localStorage.removeItem("session")
-  auth.logout()
+  auth.logout({ returnTo: process.env.GATSBY_AUTH0_LOGOUT_URL })
 }

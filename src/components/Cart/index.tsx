@@ -15,7 +15,6 @@ export default function Cart() {
   const cart = useSelector(getCart)
   const dispatch = useDispatch()
   const startOrder = () => {
-    console.log("starting order")
     dispatch(initiateCheckout())
   }
   const user = useSelector(getUser)

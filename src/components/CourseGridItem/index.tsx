@@ -7,7 +7,6 @@ type Props = {
 }
 export default function CourseGridItem(props: Props) {
   const { course } = props
-  console.log(course)
   return (
     <CardContainer as={Link} to={`/courses/${course.id}`}>
       <h2>{course.title}</h2>

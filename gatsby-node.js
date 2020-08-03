@@ -1,5 +1,8 @@
 const axios = require('axios');
-const get = endpoint => axios.get(`http://localhost:4000${endpoint}`);
+require("dotenv").config({
+	path: `.env.${process.env.NODE_ENV}`,
+})
+const get = endpoint => axios.get(`${process.env.GATSBY_API_URL}${endpoint}`);
 
 exports.createPages = async ({ actions: { createPage } }) => {
 	try {

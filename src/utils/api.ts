@@ -1,6 +1,6 @@
 import axios from "axios"
 
-const API = process.env.API_URL
+const API = process.env.GATSBY_API_URL
 
 export default function buildAxios(jwt) {
   return axios.create({

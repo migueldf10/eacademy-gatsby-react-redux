@@ -21,7 +21,6 @@ export default function coursePage(props) {
 
   const courseIds = courses.map(course => course.id)
   const alreadyBought = courseIds.includes(course.id)
-  console.log(alreadyBought)
   return (
     <Layout>
       <Hero.WrapperWithOverlap>
